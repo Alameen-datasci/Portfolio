@@ -8,7 +8,16 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+
+    <style>
+      /* Dropdown open on hover */
+      .navbar .dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0;
+      }
+    </style>
   </head>
+
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -16,11 +25,13 @@
         <a class="navbar-brand fw-bold" href="#">Alameen</a>
         <button
           class="navbar-toggler"
+          type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
@@ -32,59 +43,41 @@
             <li class="nav-item">
               <a class="nav-link" href="#projects">Projects</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand fw-bold" href="#">Alameen</a>
-        <button
-          class="navbar-toggler"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#skills">Skills</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Projects</a>
-            </li>
+            <!-- Contact Dropdown -->
             <li class="nav-item dropdown">
-              <a 
-                class="nav-link dropdown-toggle" 
-                href="#" 
-                id="contactDropdown" 
-                role="button" 
-                data-bs-toggle="dropdown" 
-                aria-expanded="false">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="contactDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 Contact
               </a>
               <ul class="dropdown-menu" aria-labelledby="contactDropdown">
                 <li>
-                  <a class="dropdown-item" href="mailto:alameen.datasci@gmail.com">
-                    📧 Email
-                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="mailto:alameen.datasci@gmail.com"
+                    >📧 Email</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="www.linkedin.com/in/al-ameen-n-443b3737a" target="_blank">
-                    🔗 LinkedIn
-                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="https://linkedin.com/in/alameen-datasci"
+                    target="_blank"
+                    >🔗 LinkedIn</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="https://github.com/Alameen-datasci" target="_blank">
-                    💻 GitHub
-                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="https://github.com/Alameen-datasci"
+                    target="_blank"
+                    >💻 GitHub</a
+                  >
                 </li>
               </ul>
             </li>
@@ -110,7 +103,7 @@
     <!-- About -->
     <section id="about" class="container py-5">
       <h2 class="text-center mb-4">About Me</h2>
-      <p class="text-center mx-auto" style="max-width: 700px;">
+      <p class="text-center mx-auto" style="max-width: 700px">
         I’m a first-year Computer Science and Data Analytics student at IIT
         Patna. I’ve completed CS50x and CS50p, and I’m currently pursuing
         Applied Data Science with Python (University of Michigan). I enjoy
@@ -118,6 +111,8 @@
         applications.
       </p>
     </section>
+
+    <!-- Skills -->
     <section id="skills" class="bg-light py-5">
       <div class="container text-center">
         <h2 class="mb-4">Skills</h2>
@@ -128,20 +123,10 @@
           <span class="badge bg-info text-dark">Matplotlib</span>
           <span class="badge bg-warning text-dark">scikit-learn</span>
           <span class="badge bg-dark">Git</span>
-        </div>
-    <!-- Skills -->
-    <section id="skills" class="bg-light py-5">
-      <div class="container text-center">
-        <h2 class="mb-4">Skills</h2>
-        <div class="d-flex flex-wrap justify-content-center gap-3">
-          <span class="badge bg-primary">Python</span>
-          <span class="badge bg-secondary">Pandas</span>
-          <span class="badge bg-success">NumPy</span>
           <span class="badge bg-success">SQL</span>
           <span class="badge bg-info text-dark">HTML</span>
           <span class="badge bg-success">CSS</span>
-          <span class="badge bg-success">Javascript</span>
-          <span class="badge bg-dark">Git</span>
+          <span class="badge bg-success">JavaScript</span>
         </div>
       </div>
     </section>
