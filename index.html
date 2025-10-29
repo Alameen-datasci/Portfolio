@@ -1,160 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Alameen | Data Science Portfolio</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David | Portfolio</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
-html,body{margin:0;padding:0;scroll-behavior:smooth;overflow-x:hidden}
-::-webkit-scrollbar{display:none}
+/* ---------- General ---------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  background-color: #f8f9fa;
+  color: #212529;
+  overflow-x: hidden;
+}
 
-body{background:#f8f9fa;color:#000;transition:.3s}
-body.dark-mode{background:#121212;color:#eaeaea}
-body.dark-mode .navbar{background:#1e1e1e!important}
-body.dark-mode #skills{background:#1a1a1a!important}
-body.dark-mode .card{background:#1c1c1c;color:#eee}
-body.dark-mode a{color:#66b2ff}
-body.dark-mode footer{background:#111;color:#fff}
+/* ---------- Navbar ---------- */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
 
-.navbar{z-index:1000}
-#dark-mode-toggle{background:transparent;border:none;font-size:22px;color:white;cursor:pointer;transition:.3s}
-body.dark-mode #dark-mode-toggle{color:#ffb400}
+#dark-mode-toggle {
+  position: absolute;
+  right: 20px;
+  top: 12px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
 
-.hero{background:#f8f9fa;padding:120px 0}
-body.dark-mode .hero{background:#111}
+/* ---------- Sections ---------- */
+section {
+  padding: 100px 0;
+}
 
-#skills{background:#f8f9fa}
-#certificates{position:relative;width:100%;height:100vh;overflow:hidden;background:#f8f9fa}
-body.dark-mode #certificates{background:#0b0b0b}
-#certificates h2{position:absolute;top:40px;width:100%;text-align:center;font-weight:700;z-index:10}
-.certificates-wrapper{position:relative;width:100%;height:100%}
-.certificate{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70%;max-width:900px;opacity:0;border-radius:20px;box-shadow:0 0 50px rgba(0,0,0,.3)}
-footer{background:#000;color:#fff;text-align:center;padding:10px}
+#about {
+  background: #fff;
+}
+
+#skills {
+  background: #f0f0f0;
+}
+
+#projects {
+  background: #fafafa;
+}
+
+#certificates {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ---------- Certificates ---------- */
+.certificates-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.certificate {
+  position: absolute;
+  width: 80%;
+  max-width: 700px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.certificate.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+/* ---------- Dark Mode ---------- */
+body.dark-mode {
+  background-color: #121212;
+  color: #eaeaea;
+}
+
+body.dark-mode .navbar {
+  background-color: #1e1e1e !important;
+}
+
+body.dark-mode #skills,
+body.dark-mode #projects,
+body.dark-mode #about {
+  background-color: #1c1c1c;
+  color: #f0f0f0;
+}
+
+body.dark-mode .card {
+  background-color: #1e1e1e;
+  color: #eaeaea;
+}
+
+body.dark-mode a {
+  color: #66b2ff;
+}
 </style>
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+<!-- ---------- Navbar ---------- -->
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="#">Alameen</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto align-items-center">
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item ms-3"><button id="dark-mode-toggle">🌙</button></li>
-      </ul>
-    </div>
+    <a class="navbar-brand fw-bold" href="#">David</a>
+    <button id="dark-mode-toggle">🌙</button>
   </div>
 </nav>
 
-<section class="hero text-center" style="margin-top:70px">
+<!-- ---------- About ---------- -->
+<section id="about" class="text-center">
+  <div class="container mt-5 pt-5">
+    <h2>About Me</h2>
+    <p class="lead mt-3">
+      I’m studying BS in Computer Science and Data Analytics at IIT Patna.  
+      I’ve completed CS50x and CS50p, and currently learning Applied Data Science with Python.
+    </p>
+  </div>
+</section>
+
+<!-- ---------- Skills ---------- -->
+<section id="skills" class="text-center">
   <div class="container">
-    <h1 class="fw-bold">Hi, I'm Alameen 👋</h1>
-    <p class="lead">Welcome to my portfolio</p>
-    <a href="#projects" class="btn btn-primary m-2">View Projects</a>
-    <a href="https://github.com/Alameen-datasci" class="btn btn-outline-dark m-2">GitHub</a>
+    <h2>Skills</h2>
+    <p class="lead mt-3">Python • Data Analysis • Pandas • HTML • CSS • JavaScript • Git</p>
   </div>
 </section>
 
-<section id="about" class="container py-5">
-  <h2 class="text-center mb-4">About Me</h2>
-  <p class="text-center mx-auto" style="max-width:700px">
-    I’m a first-year Computer Science and Data Analytics student at IIT Patna. I’ve completed CS50x and CS50p, and I’m currently pursuing Applied Data Science with Python (University of Michigan). I enjoy analyzing data, creating visualizations, and building real-world ML applications.
-  </p>
-</section>
-
-<section id="skills" class="py-5">
-  <div class="container text-center">
-    <h2 class="mb-4">Skills</h2>
-    <div class="d-flex flex-wrap justify-content-center gap-3">
-      <span class="badge bg-primary">Python</span>
-      <span class="badge bg-secondary">Pandas</span>
-      <span class="badge bg-success">NumPy</span>
-      <span class="badge bg-info text-dark">Matplotlib</span>
-      <span class="badge bg-warning text-dark">scikit-learn</span>
-      <span class="badge bg-dark">Git</span>
-      <span class="badge bg-success">SQL</span>
-      <span class="badge bg-info text-dark">HTML</span>
-      <span class="badge bg-success">CSS</span>
-      <span class="badge bg-success">JavaScript</span>
-    </div>
-  </div>
-</section>
-
-<section id="certificates">
-  <h2>Certificates</h2>
-  <div class="certificates-wrapper">
-    <img src="templates/certificates/cs50x.png" class="certificate" alt="CS50x">
-    <img src="templates/certificates/cs50p.png" class="certificate" alt="CS50p">
-  </div>
-</section>
-
-<section id="projects" class="bg-light py-5">
-  <h2 class="text-center mb-5">Projects</h2>
+<!-- ---------- Projects ---------- -->
+<section id="projects" class="text-center">
   <div class="container">
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card h-100">
-          <img src="images/netflix.png" class="card-img-top" alt="Netflix Analysis"/>
-          <div class="card-body">
-            <h5 class="card-title">Netflix Data Analysis</h5>
-            <p class="card-text">Analyzed Netflix trends using Pandas and Matplotlib to explore content insights.</p>
-            <a href="https://github.com/Alameen-datasci/netflix-analysis" class="btn btn-primary">GitHub</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card h-100">
-          <img src="images/expense.png" class="card-img-top" alt="Expense Tracker"/>
-          <div class="card-body">
-            <h5 class="card-title">Expense Tracker</h5>
-            <p class="card-text">CLI app for tracking expenses with Python, file handling, and simple UI.</p>
-            <a href="https://github.com/Alameen-datasci/expense-tracker" class="btn btn-primary">GitHub</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h2>Projects</h2>
+    <p class="lead mt-3">Coming soon...</p>
   </div>
 </section>
 
-<footer>© 2025 Alameen | Built with Bootstrap + GSAP</footer>
+<!-- ---------- Certificates ---------- -->
+<section id="certificates" class="text-center">
+  <div class="container-fluid certificates-container">
+    <img src="https://cs50.harvard.edu/x/2023/certificate.png" class="certificate active" alt="CS50x Certificate">
+    <img src="https://certificates.cs50.io/cs50p.png" class="certificate" alt="CS50p Certificate">
+    <img src="https://coursera-certificate-placeholder.png" class="certificate" alt="Applied Data Science Certificate">
+  </div>
+</section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<!-- ---------- Scripts ---------- -->
 <script>
-gsap.registerPlugin(ScrollTrigger);
-
-// certificate scroll animation (pinned like Apple)
-const certs = gsap.utils.toArray(".certificate");
-const tl = gsap.timeline({
-  scrollTrigger:{
-    trigger:"#certificates",
-    start:"top top",
-    end:"+=" + (certs.length * window.innerHeight),
-    pin:true,
-    scrub:true,
-  }
-});
-
-certs.forEach((cert,i)=>{
-  gsap.set(cert,{y:200,opacity:0});
-  tl.to(cert,{y:0,opacity:1,duration:1,ease:"power3.out"});
-  if(i!==certs.length-1){
-    tl.to(cert,{y:-200,opacity:0,duration:1,ease:"power3.inOut"},"+=0.5");
-  }
-});
-
-// dark mode toggle
-const btn=document.getElementById("dark-mode-toggle");
-btn.addEventListener("click",()=>{
+// Dark Mode Toggle
+document.getElementById("dark-mode-toggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
-  btn.textContent=document.body.classList.contains("dark-mode")?"☀️":"🌙";
+  const icon = document.getElementById("dark-mode-toggle");
+  icon.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
 });
+
+// Certificate Scroll Animation
+const certificates = document.querySelectorAll(".certificate");
+let currentIndex = 0;
+
+window.addEventListener("wheel", (e) => {
+  const certSection = document.querySelector("#certificates");
+  const rect = certSection.getBoundingClientRect();
+
+  if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+    e.preventDefault(); // stop page scroll
+
+    if (e.deltaY > 0 && currentIndex < certificates.length - 1) {
+      certificates[currentIndex].classList.remove("active");
+      currentIndex++;
+      certificates[currentIndex].classList.add("active");
+    } else if (e.deltaY < 0 && currentIndex > 0) {
+      certificates[currentIndex].classList.remove("active");
+      currentIndex--;
+      certificates[currentIndex].classList.add("active");
+    }
+  }
+}, { passive: false });
 </script>
 </body>
 </html>
