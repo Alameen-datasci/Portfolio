@@ -1,0 +1,44 @@
+:root{
+--bg: #ffffff;
+--fg: #0b1220;
+--muted: #6b7280;
+--accent: #0b5cff;
+--card: #f7f9fc;
+}
+
+/* Dark theme variables */
+body.dark, body.page-dark, .dark-page{ --bg:#0a0b0f; --fg:#e8eef8; --muted:#9aa4b2; --card:#0f1720; }
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--fg);background:var(--bg);-webkit-font-smoothing:antialiased}
+
+/* NAVBAR */
+.nav-wrap{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;padding:18px 32px;background:linear-gradient(180deg, rgba(255,255,255,0.6), transparent);backdrop-filter: blur(6px);z-index:40}
+.nav-wrap.small{padding:10px 24px}
+.nav-wrap.dark{background:linear-gradient(180deg, rgba(0,0,0,0.6), transparent)}
+.logo{font-weight:700;letter-spacing:0.4px}
+.nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+.nav a{text-decoration:none;color:var(--fg);padding:8px 10px;border-radius:8px;transition:all .22s}
+
+/* dropdown */
+.dropdown{position:relative}
+.drop-btn{background:none;border:0;padding:8px 10px;cursor:pointer;color:var(--fg)}
+.drop-list{position:absolute;right:0;top:42px;background:var(--card);padding:8px;border-radius:8px;display:none;box-shadow:0 6px 18px rgba(2,6,23,0.12)}
+.dropdown:hover .drop-list,.drop-btn:focus + .drop-list{display:block}
+.drop-list li{padding:6px 8px}
+.drop-list a{color:var(--fg);text-decoration:none}
+
+/* THEME TOGGLE */
+.theme-toggle{background:none;border:0;cursor:pointer;font-size:18px;padding:8px}
+
+/* HERO */
+.hero{padding:60px 20px}
+.hero-inner{display:flex;gap:40px;align-items:center;flex-wrap:wrap}
+.profile-card{width:220px;height:280px;border-radius:14px;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,250,0.6));box-shadow:0 10px 30px rgba(2,6,23,0.08);display:flex;flex-direction:column;align-items:center;justify-content:center}
+body.dark .profile-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
+.profile-img{width:170px;height:170px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,0.6)}
+.profile-label{margin-top:12px;font-size:13px;color:var(--muted)}
+.hero-text h1{font-size:36px;margin:6px 0}
+.lead{color:var(--muted);max-width:640px}
+.cta-row{margin-top:14px}
+.btn{display:inline-block;padding:10px 16px
