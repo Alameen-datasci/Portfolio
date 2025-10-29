@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <style>
-      /* GENERAL SETTINGS */
+      /* GENERAL */
       html, body {
         margin: 0;
         padding: 0;
@@ -18,9 +18,7 @@
         scrollbar-width: none;
         -ms-overflow-style: none;
       }
-      ::-webkit-scrollbar {
-        display: none;
-      }
+      ::-webkit-scrollbar { display: none; }
 
       body {
         background: #f8f9fa;
@@ -29,8 +27,8 @@
       }
 
       body.dark-mode {
-        background: #0b0b0b;
-        color: #f8f9fa;
+        background: #121212;
+        color: #eaeaea;
       }
 
       /* NAVBAR */
@@ -38,96 +36,89 @@
         z-index: 1000;
       }
 
-      /* DARK MODE TOGGLE BUTTON */
+      body.dark-mode .navbar {
+        background-color: #1e1e1e !important;
+      }
+
+      /* DARK MODE BUTTON */
       #dark-mode-toggle {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 9999;
-        background: rgba(255, 255, 255, 0.15);
-        color: white;
-        border: 1px solid white;
-        border-radius: 50%;
-        padding: 10px 12px;
+        background: transparent;
+        border: none;
+        font-size: 22px;
         cursor: pointer;
-        font-size: 18px;
-        transition: background 0.3s, color 0.3s;
+        color: white;
+        transition: color 0.3s;
       }
 
       body.dark-mode #dark-mode-toggle {
-        background: rgba(255, 255, 255, 0.2);
         color: #ffb400;
-        border: 1px solid #ffb400;
       }
 
-      /* HERO SECTION */
+      /* HERO */
       .hero {
         background: #f8f9fa;
         padding: 120px 0;
       }
+      body.dark-mode .hero { background: #111; }
 
-      body.dark-mode .hero {
-        background: #111;
-      }
-
-      /* CERTIFICATES SECTION */
+      /* CERTIFICATES */
       #certificates {
         position: relative;
         width: 100%;
-        height: 100vh;
+        min-height: 100vh;
+        height: auto;
         overflow: hidden;
         background: #f8f9fa;
+        padding-bottom: 100px;
       }
-
-      body.dark-mode #certificates {
-        background: #0b0b0b;
-      }
+      body.dark-mode #certificates { background: #0b0b0b; }
 
       #certificates h2 {
-        position: absolute;
-        top: 40px;
-        width: 100%;
         text-align: center;
-        z-index: 10;
+        margin-top: 50px;
         font-weight: bold;
       }
 
       .certificates-wrapper {
-        position: relative;
-        width: 100%;
-        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        margin-top: 80px;
       }
 
       .certificate {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         width: 70%;
         max-width: 900px;
-        opacity: 0;
         border-radius: 20px;
         box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
       }
 
-      /* FOOTER */
+      /* CARDS + FOOTER */
+      body.dark-mode .card {
+        background-color: #1c1c1c;
+        color: #f0f0f0;
+      }
+      body.dark-mode a { color: #66b2ff; }
+      body.dark-mode .btn-outline-dark {
+        border-color: #ccc;
+        color: #ccc;
+      }
+      body.dark-mode .btn-outline-dark:hover {
+        background: #ccc;
+        color: #000;
+      }
       footer {
         background: #000;
         color: #fff;
         text-align: center;
         padding: 10px;
       }
-
-      body.dark-mode footer {
-        background: #111;
-      }
+      body.dark-mode footer { background: #111; }
     </style>
   </head>
 
   <body>
-    <!-- DARK MODE BUTTON -->
-    <button id="dark-mode-toggle">🌙</button>
-
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
       <div class="container">
@@ -142,52 +133,23 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#skills">Skills</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#certificates">Certificates</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Projects</a>
-            </li>
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="contactDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-              >
+              <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown">
                 Contact
               </a>
               <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="mailto:alameen.datasci@gmail.com"
-                    >📧 Email</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="https://www.linkedin.com/in/Alameen-datasci"
-                    target="_blank"
-                    >🔗 LinkedIn</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="https://www.github.com/Alameen-datasci"
-                    target="_blank"
-                    >💻 GitHub</a
-                  >
-                </li>
+                <li><a class="dropdown-item" href="mailto:alameen.datasci@gmail.com">📧 Email</a></li>
+                <li><a class="dropdown-item" href="https://www.linkedin.com/in/Alameen-datasci" target="_blank">🔗 LinkedIn</a></li>
+                <li><a class="dropdown-item" href="https://www.github.com/Alameen-datasci" target="_blank">💻 GitHub</a></li>
               </ul>
+            </li>
+            <li class="nav-item ms-3">
+              <button id="dark-mode-toggle">🌙</button>
             </li>
           </ul>
         </div>
@@ -200,11 +162,7 @@
         <h1 class="fw-bold">Hi, I'm Alameen 👋</h1>
         <p class="lead">Welcome to my portfolio</p>
         <a href="#projects" class="btn btn-primary m-2">View Projects</a>
-        <a
-          href="https://github.com/Alameen-datasci"
-          class="btn btn-outline-dark m-2"
-          >GitHub</a
-        >
+        <a href="https://github.com/Alameen-datasci" class="btn btn-outline-dark m-2">GitHub</a>
       </div>
     </section>
 
@@ -212,11 +170,8 @@
     <section id="about" class="container py-5">
       <h2 class="text-center mb-4">About Me</h2>
       <p class="text-center mx-auto" style="max-width: 700px">
-        I’m a first-year Computer Science and Data Analytics student at IIT
-        Patna. I’ve completed CS50x and CS50p, and I’m currently pursuing
-        Applied Data Science with Python (University of Michigan). I enjoy
-        analyzing data, creating visualizations, and building real-world ML
-        applications.
+        I’m a first-year Computer Science and Data Analytics student at IIT Patna. I’ve completed CS50x and CS50p, and I’m currently pursuing
+        Applied Data Science with Python (University of Michigan). I enjoy analyzing data, creating visualizations, and building real-world ML applications.
       </p>
     </section>
 
@@ -258,9 +213,7 @@
               <img src="images/netflix.png" class="card-img-top" alt="Netflix Analysis" />
               <div class="card-body">
                 <h5 class="card-title">Netflix Data Analysis</h5>
-                <p class="card-text">
-                  Analyzed Netflix trends using Pandas and Matplotlib to explore content insights.
-                </p>
+                <p class="card-text">Analyzed Netflix trends using Pandas and Matplotlib to explore content insights.</p>
                 <a href="https://github.com/Alameen-datasci/netflix-analysis" class="btn btn-primary">GitHub</a>
               </div>
             </div>
@@ -271,9 +224,7 @@
               <img src="images/expense.png" class="card-img-top" alt="Expense Tracker" />
               <div class="card-body">
                 <h5 class="card-title">Expense Tracker</h5>
-                <p class="card-text">
-                  CLI app for tracking expenses with Python, file handling, and simple UI.
-                </p>
+                <p class="card-text">CLI app for tracking expenses with Python, file handling, and simple UI.</p>
                 <a href="https://github.com/Alameen-datasci/expense-tracker" class="btn btn-primary">GitHub</a>
               </div>
             </div>
@@ -304,33 +255,18 @@
 
       const certificates = document.querySelectorAll(".certificate");
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#certificates",
-          start: "top top",
-          end: "+=" + (certificates.length * window.innerHeight),
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1
-        }
-      });
-
-      certificates.forEach((cert, i) => {
-        gsap.set(cert, { y: 200, opacity: 0 });
-        tl.to(cert, {
-          y: 0,
-          opacity: 1,
+      gsap.utils.toArray(certificates).forEach((cert) => {
+        gsap.from(cert, {
+          scrollTrigger: {
+            trigger: cert,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+          y: 100,
+          opacity: 0,
           duration: 1,
           ease: "power3.out"
         });
-        if (i !== certificates.length - 1) {
-          tl.to(cert, {
-            y: -200,
-            opacity: 0,
-            duration: 1,
-            ease: "power3.inOut"
-          }, "+=0.5");
-        }
       });
 
       // DARK MODE TOGGLE
