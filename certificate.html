@@ -1,47 +1,63 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Certificates — Your Name</title>
-  <link rel="stylesheet" href="Assets/style.css">
-  <script defer src="Assets/script.js"></script>
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
-<body class="page-dark">
-  <header class="nav-wrap dark">
-    <div class="logo">YourName</div>
-    <nav>
-      <ul>
+<body class="light-mode">
+  <header>
+    <nav class="navbar">
+      <div class="logo">YourPortfolio</div>
+      <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
         <li><a href="projects.html">Projects</a></li>
-        <li><a href="certificate.html">Certificates</a></li>
+        <li><a class="active" href="certificate.html">Certificates</a></li>
+        <li class="dropdown">
+          <a href="#" aria-haspopup="true">Contact ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="mailto:example@email.com">📧 Email</a></li>
+            <li><a href="https://linkedin.com" target="_blank" rel="noopener">💼 LinkedIn</a></li>
+            <li><a href="https://github.com" target="_blank" rel="noopener">🐙 GitHub</a></li>
+          </ul>
+        </li>
       </ul>
+      <button id="mode-toggle" class="mode-toggle" aria-label="Toggle theme">🌙</button>
     </nav>
-    <button id="theme-toggle" class="theme-toggle">🌙</button>
   </header>
 
-  <main class="section dark-page">
-    <div class="container">
-      <h1>Certificates</h1>
-      <p>Scroll to reveal certificates (animations reverse if you scroll back).</p>
+  <main class="container section dark-section">
+    <h1 class="page-title fade-in" data-animate>Certificates</h1>
+    <p class="subtitle fade-in" data-animate>Scroll to reveal. Animations reverse when you scroll back.</p>
 
-      <div class="certificates-vertical">
-        <figure class="cert-large" data-animate>
-          <img src="Assets/Images/certificate-sample1.jpg" alt="Certificate 1">
-          <figcaption>CS50x — Example — click to view</figcaption>
-        </figure>
+    <div class="cert-vertical">
+      <figure class="cert-card" data-animate>
+        <img src="assets/images/certificate1.jpg" alt="CS50x certificate">
+        <figcaption>CS50x — Harvard (Sample)</figcaption>
+      </figure>
 
-        <figure class="cert-large" data-animate>
-          <img src="Assets/Images/certificate-sample2.jpg" alt="Certificate 2">
-          <figcaption>Applied Data Science — Example — click to view</figcaption>
-        </figure>
-      </div>
-
-      <div class="center"><a class="btn" href="index.html">Back to Home</a></div>
+      <figure class="cert-card" data-animate>
+        <img src="assets/images/certificate2.jpg" alt="CS50p certificate">
+        <figcaption>CS50p — Harvard (Sample)</figcaption>
+      </figure>
     </div>
+
+    <div class="center"><a class="btn" href="index.html">Back to Home</a></div>
   </main>
 
-  <footer class="footer dark">© 2025 Your Name</footer>
-  <div id="cursor" class="cursor"></div>
+  <footer class="footer-dark">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="certificate.html">Certificates</a>
+      <a href="mailto:example@email.com">Contact</a>
+    </div>
+    <p>© 2025 Your Name</p>
+  </footer>
+
+  <script src="assets/script.js"></script>
 </body>
 </html>
