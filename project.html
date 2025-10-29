@@ -1,55 +1,71 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projects — Your Name</title>
-  <link rel="stylesheet" href="Assets/style.css">
-  <script defer src="Assets/script.js"></script>
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
-<body class="page-light">
-  <header class="nav-wrap small">
-    <div class="logo">YourName</div>
-    <nav>
-      <ul>
+<body class="light-mode">
+  <header>
+    <nav class="navbar">
+      <div class="logo">YourPortfolio</div>
+      <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a class="active" href="projects.html">Projects</a></li>
         <li><a href="certificate.html">Certificates</a></li>
+        <li class="dropdown">
+          <a href="#" aria-haspopup="true">Contact ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="mailto:example@email.com">📧 Email</a></li>
+            <li><a href="https://linkedin.com" target="_blank" rel="noopener">💼 LinkedIn</a></li>
+            <li><a href="https://github.com" target="_blank" rel="noopener">🐙 GitHub</a></li>
+          </ul>
+        </li>
       </ul>
+      <button id="mode-toggle" class="mode-toggle" aria-label="Toggle theme">🌙</button>
     </nav>
-    <button id="theme-toggle" class="theme-toggle">🌙</button>
   </header>
 
-  <main class="section">
-    <div class="container">
-      <h1>Projects</h1>
-      <p>Click any card to go to the project repository.</p>
+  <main class="container section">
+    <h1 class="page-title fade-in" data-animate>Projects</h1>
+    <p class="subtitle fade-in" data-animate>Click a project card to open its repository.</p>
 
-      <div class="project-list">
-        <!-- Template project card (duplicate/replace) -->
-        <a class="project-item hoverable" href="https://github.com/yourusername/project-one" target="_blank">
-          <img src="Assets/Images/project-sample1.jpg" alt="Project 1">
-          <div class="project-body">
-            <h3>Project One</h3>
-            <p>Short summary — what technologies and what it does.</p>
-          </div>
-        </a>
+    <div class="project-grid" data-animate>
+      <a class="project-card hoverable" href="https://github.com/yourusername/project-one" target="_blank" rel="noopener">
+        <div class="project-media"><img src="assets/images/sample-project1.jpg" alt="Project One"></div>
+        <div class="project-content">
+          <h3>Project One</h3>
+          <p>Interactive COVID dashboard — Python, Plotly, Flask.</p>
+        </div>
+      </a>
 
-        <a class="project-item hoverable" href="https://github.com/yourusername/project-two" target="_blank">
-          <img src="Assets/Images/project-sample2.jpg" alt="Project 2">
-          <div class="project-body">
-            <h3>Project Two</h3>
-            <p>Short summary — what technologies and what it does.</p>
-          </div>
-        </a>
+      <a class="project-card hoverable" href="https://github.com/yourusername/project-two" target="_blank" rel="noopener">
+        <div class="project-media"><img src="assets/images/sample-project2.jpg" alt="Project Two"></div>
+        <div class="project-content">
+          <h3>Project Two</h3>
+          <p>Movie recommender — pandas, sklearn, collaborative filtering.</p>
+        </div>
+      </a>
 
-        <!-- add more cards as needed -->
-      </div>
-
+      <!-- duplicate these cards for more projects -->
     </div>
+
+    <div class="center"><a class="btn" href="index.html">Back to Home</a></div>
   </main>
 
-  <footer class="footer small">© 2025 Your Name</footer>
-  <div id="cursor" class="cursor"></div>
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="certificate.html">Certificates</a>
+      <a href="mailto:example@email.com">Contact</a>
+    </div>
+    <p>© 2025 Your Name</p>
+  </footer>
+
+  <script src="assets/script.js"></script>
 </body>
 </html>
