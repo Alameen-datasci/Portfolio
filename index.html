@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="Assets/style.css" />
+  <script defer src="Assets/script.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">My Portfolio</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="certificate.html">Certificates</a></li>
+        <li class="dropdown">
+          <a href="#">Contact ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="mailto:youremail@example.com"><img src="Assets/Images/email-icon.png" alt="Email" /></a></li>
+            <li><a href="https://linkedin.com/in/yourprofile" target="_blank"><img src="Assets/Images/linkedin-icon.png" alt="LinkedIn" /></a></li>
+            <li><a href="https://github.com/yourusername" target="_blank"><img src="Assets/Images/github-icon.png" alt="GitHub" /></a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <button id="theme-toggle">🌙</button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero fade-in">
+    <img src="Assets/Images/cat.jpg" alt="Your Profile Photo Here" class="profile-pic" />
+    <h1>Hello, I’m <span>Your Name</span></h1>
+    <p>Welcome to my portfolio — explore my projects and achievements below.</p>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="fade-in">
+    <h2>About Me</h2>
+    <p>
+      I’m a Computer Science and Data Analytics student passionate about technology, data, and design. 
+      I enjoy building projects that blend creativity and logic.
+    </p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="fade-in">
+    <h2>Projects</h2>
+    <div class="project-preview">
+      <img src="Assets/Images/project-sample.jpg" alt="Project sample" />
+      <p>A glimpse of my work — interactive, data-driven, and visually appealing.</p>
+      <a href="projects.html" class="btn">See More</a>
+    </div>
+  </section>
+
+  <!-- Certificates Section -->
+  <section id="certificates" class="fade-in">
+    <h2>Certificates</h2>
+    <div class="certificate-preview">
+      <img src="Assets/Images/certificate-sample.jpg" alt="Certificate sample" />
+      <p>Some of my academic and online course certificates.</p>
+      <a href="certificate.html" class="btn">See More</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Your Name | Built with ❤️ and JavaScript</p>
+  </footer>
+</body>
+</html>
