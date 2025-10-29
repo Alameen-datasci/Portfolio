@@ -3,61 +3,54 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Certificates — Your Name</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <title>Certificates — Al Ameen</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/script.js" defer></script>
 </head>
-<body class="light-mode">
-  <header>
-    <nav class="navbar">
-      <div class="logo">YourPortfolio</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a class="active" href="certificate.html">Certificates</a></li>
-        <li class="dropdown">
-          <a href="#" aria-haspopup="true">Contact ▾</a>
-          <ul class="dropdown-menu">
-            <li><a href="mailto:example@email.com">📧 Email</a></li>
-            <li><a href="https://linkedin.com" target="_blank" rel="noopener">💼 LinkedIn</a></li>
-            <li><a href="https://github.com" target="_blank" rel="noopener">🐙 GitHub</a></li>
-          </ul>
-        </li>
-      </ul>
-      <button id="mode-toggle" class="mode-toggle" aria-label="Toggle theme">🌙</button>
-    </nav>
-  </header>
+<body class="light">
+  <nav class="navbar">
+    <div class="logo">MyPortfolio</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="project.html">Projects</a></li>
+      <li><a class="active" href="certificate.html">Certificates</a></li>
+      <li class="dropdown" id="contact-dropdown-3">
+        <button class="dropdown-toggle" aria-expanded="false">Contact ▾</button>
+        <ul class="dropdown-menu">
+          <li><a href="mailto:alameenallu7306@gmail.com">📧 Email</a></li>
+          <li><a href="https://linkedin.com/in/Alameen-datasci" target="_blank">💼 LinkedIn</a></li>
+          <li><a href="https://github.com/Alameen-datasci" target="_blank">🐙 GitHub</a></li>
+        </ul>
+      </li>
+    </ul>
+    <button id="mode-toggle">🌙</button>
+  </nav>
 
-  <main class="container section dark-section">
-    <h1 class="page-title fade-in" data-animate>Certificates</h1>
-    <p class="subtitle fade-in" data-animate>Scroll to reveal. Animations reverse when you scroll back.</p>
+  <main class="section">
+    <div class="container">
+      <h1 class="section-title">Certificates</h1>
+      <p class="muted">Scroll to reveal — animations reverse when you scroll back.</p>
 
-    <div class="cert-vertical">
-      <figure class="cert-card" data-animate>
-        <img src="assets/images/certificate1.jpg" alt="CS50x certificate">
-        <figcaption>CS50x — Harvard (Sample)</figcaption>
-      </figure>
+      <div class="cert-vertical">
+        <figure class="card hover-lift reveal">
+          <img src="assets/images/certificate1.jpg" alt="Certificate 1">
+          <figcaption class="muted">CS50x — Example</figcaption>
+        </figure>
 
-      <figure class="cert-card" data-animate>
-        <img src="assets/images/certificate2.jpg" alt="CS50p certificate">
-        <figcaption>CS50p — Harvard (Sample)</figcaption>
-      </figure>
+        <figure class="card hover-lift reveal">
+          <img src="assets/images/certificate2.jpg" alt="Certificate 2">
+          <figcaption class="muted">CS50p — Example</figcaption>
+        </figure>
+      </div>
+
+      <div class="center"><a class="btn" href="index.html">Back to Home</a></div>
     </div>
-
-    <div class="center"><a class="btn" href="index.html">Back to Home</a></div>
   </main>
 
-  <footer class="footer-dark">
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="index.html#about">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="certificate.html">Certificates</a>
-      <a href="mailto:example@email.com">Contact</a>
-    </div>
-    <p>© 2025 Your Name</p>
+  <footer class="site-footer">
+    <div class="footer-links"><a href="index.html">Home</a><a href="project.html">Projects</a></div>
+    <p class="muted">© 2025 Al Ameen</p>
   </footer>
-
-  <script src="assets/script.js"></script>
 </body>
 </html>
