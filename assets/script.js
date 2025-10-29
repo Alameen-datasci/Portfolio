@@ -1,10 +1,8 @@
-// script.js
-
 // ======= DARK MODE TOGGLE =======
 const toggleBtn = document.getElementById('modeToggle');
 const body = document.body;
 
-// Check saved theme in localStorage
+// Apply saved theme
 if (localStorage.getItem('theme') === 'dark') {
   body.classList.add('dark-mode');
   toggleBtn.textContent = '☀️';
@@ -12,7 +10,7 @@ if (localStorage.getItem('theme') === 'dark') {
   toggleBtn.textContent = '🌙';
 }
 
-// Toggle theme when button clicked
+// Toggle mode
 toggleBtn.addEventListener('click', () => {
   body.classList.toggle('dark-mode');
   if (body.classList.contains('dark-mode')) {
@@ -24,27 +22,29 @@ toggleBtn.addEventListener('click', () => {
   }
 });
 
-// ======= NAVIGATION DROPDOWN =======
+// ======= CONTACT DROPDOWN =======
 const contactMenu = document.querySelector('.contact-menu');
 const contactLink = document.querySelector('.contact-link');
 
-contactLink.addEventListener('mouseenter', () => {
-  contactMenu.style.display = 'block';
-});
-contactLink.addEventListener('mouseleave', () => {
-  contactMenu.style.display = 'none';
-});
-contactMenu.addEventListener('mouseenter', () => {
-  contactMenu.style.display = 'block';
-});
-contactMenu.addEventListener('mouseleave', () => {
-  contactMenu.style.display = 'none';
-});
+if (contactLink && contactMenu) {
+  contactLink.addEventListener('mouseenter', () => {
+    contactMenu.style.display = 'block';
+  });
+  contactLink.addEventListener('mouseleave', () => {
+    contactMenu.style.display = 'none';
+  });
+  contactMenu.addEventListener('mouseenter', () => {
+    contactMenu.style.display = 'block';
+  });
+  contactMenu.addEventListener('mouseleave', () => {
+    contactMenu.style.display = 'none';
+  });
+}
 
-// ======= SCROLL ANIMATIONS =======
+// ======= SCROLL REVEAL =======
 const revealElements = document.querySelectorAll('.reveal');
 
-window.addEventListener('scroll', () => {
+function revealOnScroll() {
   for (let i = 0; i < revealElements.length; i++) {
     const windowHeight = window.innerHeight;
     const elementTop = revealElements[i].getBoundingClientRect().top;
@@ -56,4 +56,10 @@ window.addEventListener('scroll', () => {
       revealElements[i].classList.remove('active');
     }
   }
-});
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+// ======= SCROLL TO TOP ON LOAD =======
+window.scrollTo({ top: 0, behavior: 'instant' });
