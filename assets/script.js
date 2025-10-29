@@ -1,77 +1,81 @@
-// Theme toggle (persist)
-const body = document.documentElement;
-const themeButtons = document.querySelectorAll('#theme-toggle');
-function setTheme(theme){
-  if(theme === 'dark') document.body.classList.add('dark');
-  else document.body.classList.remove('dark');
-  try{ localStorage.setItem('theme', theme);}catch(e){}
-}
+/* ---------- Theme toggle (default: light) ---------- */
 (function(){
+  const root = document.documentElement;
+  const body = document.body;
+  const toggleBtns = document.querySelectorAll('#mode-toggle, .mode-toggle');
+  function setTheme(theme){
+    if(theme === 'dark'){
+      body.classList.add('dark-mode');
+      try{ localStorage.setItem('theme','dark') }catch(e){}
+    } else {
+      body.classList.remove('dark-mode');
+      try{ localStorage.setItem('theme','light') }catch(e){}
+    }
+  }
+  // init
   const saved = localStorage.getItem('theme');
-  const preferDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  setTheme(saved || (preferDark? 'dark' : 'light'));
-})();
+  if(saved) setTheme(saved);
+  else setTheme('light');
 
-// delegate theme toggle for multiple buttons
-document.addEventListener('click', e => {
-  if(!e.target.matches('#theme-toggle')) return;
-  const isDark = document.body.classList.contains('dark');
-  setTheme(isDark? 'light':'dark');
-});
-
-// Dropdown keyboard accessibility
-document.addEventListener('keydown', e => {
-  if(e.key === 'Escape') document.querySelectorAll('.drop-list').forEach(dl => dl.style.display='none');
-});
-
-// Custom cursor
-(function(){
-  const cursor = document.getElementById('cursor');
-  if(!cursor) return;
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
-  document.addEventListener('mouseover', e => {
-    if(e.target.closest('.hoverable') || e.target.tagName === 'A' || e.target.tagName === 'BUTTON') cursor.classList.add('big');
-  });
-  document.addEventListener('mouseout', e => {
-    if(e.target.closest('.hoverable') || e.target.tagName === 'A' || e.target.tagName === 'BUTTON') cursor.classList.remove('big');
+  // toggle handler (supports multiple buttons)
+  document.addEventListener('click', e => {
+    if(e.target && (e.target.id === 'mode-toggle' || e.target.classList.contains('mode-toggle'))){
+      const isDark = document.body.classList.contains('dark-mode');
+      setTheme(isDark ? 'light' : 'dark');
+    }
   });
 })();
 
-// IntersectionObserver for scroll-based reveal and reverse when leaving viewport
+/* ---------- IntersectionObserver for reveal (reversible) ---------- */
 (function(){
+  const els = document.querySelectorAll('[data-animate], .fade-in');
+  if(!els.length) return;
   const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(entry =>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('in-view');
-      }else{
-        entry.target.classList.remove('in-view');
+    entries.forEach(entry=>{
+      if(entry.isIntersecting) entry.target.classList.add('in-view');
+      else entry.target.classList.remove('in-view');
+    });
+  }, {threshold: 0.15});
+  els.forEach(el => obs.observe(el));
+})();
+
+/* ---------- Dropdown accessibility: click to toggle on small screens ---------- */
+(function(){
+  document.querySelectorAll('.dropdown').forEach(drop=>{
+    // open on click for touch devices
+    drop.addEventListener('click', function(e){
+      const menu = this.querySelector('.dropdown-menu');
+      if(!menu) return;
+      // on small screens, toggle; on large, hover handles it
+      if(window.innerWidth <= 780){
+        e.preventDefault();
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
       }
     });
-  },{threshold:0.15});
+  });
 
-  document.querySelectorAll('[data-animate]').forEach(el => obs.observe(el));
+  // close dropdowns when clicking outside
+  document.addEventListener('click', e=>{
+    document.querySelectorAll('.dropdown .dropdown-menu').forEach(menu=>{
+      const parent = menu.closest('.dropdown');
+      if(!parent.contains(e.target) && window.innerWidth <= 780){
+        menu.style.display = 'none';
+      }
+    });
+  });
 })();
 
-// Small enhancement: subtle parallax on hero image when scrolling
+/* ---------- Smooth scroll for hash links ---------- */
 (function(){
-  const hero = document.querySelector('.hero');
-  if(!hero) return;
-  window.addEventListener('scroll', () =>{
-    const t = Math.min(window.scrollY/300, 1);
-    const img = hero.querySelector('.profile-card');
-    if(img) img.style.transform = `translateY(${t* -12}px) scale(${1 - t*0.02})`;
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', function(e){
+      const href = this.getAttribute('href');
+      if(!href || href === '#') return;
+      const el = document.querySelector(href);
+      if(el){
+        e.preventDefault();
+        el.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
+    });
   });
 })();
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(a =>{
-  a.addEventListener('click', e =>{
-    e.preventDefault();
-    const id = a.getAttribute('href').slice(1);
-    const el = document.getElementById(id);
-    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-  });
-});
