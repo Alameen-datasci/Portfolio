@@ -1,115 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Your Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
   <link rel="stylesheet" href="assets/style.css">
-  <script defer src="assets/script.js"></script>
 </head>
-<body>
-  <header class="nav-wrap">
-    <div class="logo">YourName</div>
-    <nav class="nav">
-      <ul>
-        <li><a href="index.html">Home</a></li>
+<body class="light-mode">
+  <header>
+    <nav class="navbar">
+      <div class="logo">MyPortfolio</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="certificate.html">Certificates</a></li>
         <li class="dropdown">
-          <button class="drop-btn">Contact ▾</button>
-          <ul class="drop-list">
-            <li><a href="mailto:youremail@example.com">Email</a></li>
-            <li><a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a></li>
+          <a href="#">Contact ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="mailto:example@email.com">📧 Email</a></li>
+            <li><a href="https://linkedin.com" target="_blank">💼 LinkedIn</a></li>
+            <li><a href="https://github.com" target="_blank">🐙 GitHub</a></li>
           </ul>
         </li>
       </ul>
+      <button id="mode-toggle">🌙</button>
     </nav>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero section" id="hero">
-      <div class="hero-inner">
-        <div class="profile-card hoverable" data-animate>
-          <img src="assets/Images/cat.jpg" alt="Profile placeholder — replace me" class="profile-img">
-          <div class="profile-label">Profile photo — replace with your portrait</div>
-        </div>
+  <section id="home" class="hero fade-in">
+    <img src="assets/images/cat-profile.jpg" alt="Profile Photo" class="profile-img">
+    <h1>Hi, I'm [Your Name]</h1>
+    <p>First-year BS in Computer Science and Data Analytics at IIT Patna</p>
+  </section>
 
-        <div class="hero-text">
-          <h1>Hi, I’m <span class="accent">Your Name</span></h1>
-          <p class="lead">Computer Science & Data Analytics student. I build interactive, polished projects and clean interfaces.</p>
-          <p class="cta-row">
-            <a class="btn" href="projects.html">See projects</a>
-            <a class="btn ghost" href="certificate.html">Certificates</a>
-          </p>
-        </div>
+  <section id="about" class="fade-in">
+    <h2>About Me</h2>
+    <p>I’m passionate about data science, analytics, and technology. I enjoy transforming data into insights and building intelligent applications. Currently learning Python, Pandas, and Applied Data Science with Python (U-Michigan).</p>
+  </section>
+
+  <section id="projects-preview" class="fade-in">
+    <h2>Featured Projects</h2>
+    <div class="card-container">
+      <div class="card">
+        <img src="assets/images/sample-project1.jpg" alt="Project 1">
+        <h3>COVID Data Dashboard</h3>
+        <p>Interactive visualization of COVID-19 trends using Python and Plotly.</p>
       </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section about" data-animate>
-      <div class="container">
-        <h2>About</h2>
-        <p>I’m a first-semester CS student at IIT Patna learning web & data — I enjoy clean UI, animations, and building portfolio-ready projects.</p>
+      <div class="card">
+        <img src="assets/images/sample-project2.jpg" alt="Project 2">
+        <h3>Movie Recommender</h3>
+        <p>Recommendation system built with machine learning and Pandas.</p>
       </div>
-    </section>
-
-    <!-- PROJECTS PREVIEW -->
-    <section id="projects-preview" class="section" data-animate>
-      <div class="container">
-        <h2>Projects</h2>
-        <div class="cards">
-          <article class="card hoverable" tabindex="0">
-            <img src="assets/Images/project-sample1.jpg" alt="Project sample 1">
-            <h3>Project One</h3>
-            <p>Brief description of Project One. Click to view on GitHub.</p>
-            <a href="https://github.com/yourusername/project-one" target="_blank" class="card-link">Open on GitHub</a>
-          </article>
-
-          <article class="card hoverable" tabindex="0">
-            <img src="assets/Images/project-sample2.jpg" alt="Project sample 2">
-            <h3>Project Two</h3>
-            <p>Brief description of Project Two. Click to view on GitHub.</p>
-            <a href="https://github.com/yourusername/project-two" target="_blank" class="card-link">Open on GitHub</a>
-          </article>
-        </div>
-        <div class="center"><a class="btn" href="projects.html">See all projects</a></div>
-      </div>
-    </section>
-
-    <!-- CERTIFICATES PREVIEW -->
-    <section id="cert-preview" class="section" data-animate>
-      <div class="container">
-        <h2>Certificates</h2>
-        <p>A few highlights — click to view more.</p>
-        <div class="cert-grid">
-          <figure class="cert hoverable">
-            <img src="assets/Images/certificate-sample1.jpg" alt="Certificate sample 1">
-            <figcaption>CS50x — Example certificate</figcaption>
-          </figure>
-
-          <figure class="cert hoverable">
-            <img src="assets/Images/certificate-sample2.jpg" alt="Certificate sample 2">
-            <figcaption>Applied Data Science — Example certificate</figcaption>
-          </figure>
-        </div>
-        <div class="center"><a class="btn" href="certificate.html">See all certificates</a></div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div>© 2025 Your Name</div>
-    <div class="social-inline">
-      <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a>
     </div>
+    <a href="projects.html" class="btn">See All Projects</a>
+  </section>
+
+  <section id="certificates-preview" class="fade-in">
+    <h2>Certificates</h2>
+    <div class="card-container">
+      <div class="card">
+        <img src="assets/images/certificate1.jpg" alt="Certificate 1">
+        <h3>CS50x – Harvard</h3>
+      </div>
+      <div class="card">
+        <img src="assets/images/certificate2.jpg" alt="Certificate 2">
+        <h3>CS50p – Harvard</h3>
+      </div>
+    </div>
+    <a href="certificate.html" class="btn">View All Certificates</a>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="certificate.html">Certificates</a>
+      <a href="mailto:example@email.com">Contact</a>
+    </div>
+    <p>© 2025 Your Name | Built with 💻 & ☕</p>
   </footer>
 
-  <!-- Custom cursor -->
-  <div id="cursor" class="cursor"></div>
+  <script src="assets/script.js"></script>
 </body>
 </html>
