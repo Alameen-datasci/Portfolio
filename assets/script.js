@@ -1,103 +1,112 @@
-/* ===== Defensive utility selectors ===== */
-const getToggle = () => document.getElementById('modeToggle') || document.getElementById('mode-toggle') || document.querySelector('.mode-toggle');
-const toggleBtn = getToggle();
-const body = document.body;
+/* Defensive, single-file JS that works with your existing HTML structure.
+   - supports toggle button ids/classes: #mode-toggle, #modeToggle, .mode-toggle
+   - dropdowns with .dropdown and .dropdown-menu
+   - reveal animations via .reveal
+   - small cursor dot that enlarges on interactive hoverables
+   - ensures page lands at top on load
+*/
 
-/* ===== Apply saved theme on load ===== */
-(function initTheme(){
-  try{
+(function () {
+  const doc = document;
+  const body = doc.body;
+
+  /* ---------- helper: get toggle button (support multiple id/class names) ---------- */
+  function getModeToggle() {
+    return doc.getElementById('mode-toggle') ||
+           doc.getElementById('modeToggle') ||
+           doc.querySelector('.mode-toggle') ||
+           null;
+  }
+  const modeBtn = getModeToggle();
+
+  /* ---------- initialize theme from localStorage ---------- */
+  try {
     const saved = localStorage.getItem('theme');
-    if(saved === 'dark') {
-      body.classList.add('dark-mode');
-      if(toggleBtn) toggleBtn.textContent = '☀️';
-    } else {
-      body.classList.remove('dark-mode');
-      if(toggleBtn) toggleBtn.textContent = '🌙';
-    }
-  }catch(e){ /* ignore storage errors */ }
-})();
-
-/* ===== Toggle handler (works even if multiple buttons exist) ===== */
-if(toggleBtn){
-  toggleBtn.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const isDark = body.classList.contains('dark-mode');
-    try{ localStorage.setItem('theme', isDark ? 'dark' : 'light'); }catch(e){}
-    toggleBtn.textContent = isDark ? '☀️' : '🌙';
-  });
-}
-
-/* ===== Dropdown behaviour (desktop hover, mobile click) ===== */
-document.querySelectorAll('.dropdown').forEach(drop => {
-  const menu = drop.querySelector('.dropdown-menu');
-  if(!menu) return;
-
-  // Desktop: rely on CSS :hover. For touch / small screens, toggle on click.
-  drop.addEventListener('click', (ev) => {
-    if(window.innerWidth <= 820){
-      ev.stopPropagation();
-      // toggle display
-      menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-    }
-  });
-});
-
-// close any open dropdown when clicking outside (mobile)
-document.addEventListener('click', (ev) => {
-  if(window.innerWidth <= 820){
-    document.querySelectorAll('.dropdown .dropdown-menu').forEach(m => {
-      if(!m) return;
-      const parent = m.closest('.dropdown');
-      if(parent && !parent.contains(ev.target)) m.style.display = 'none';
-    });
-  }
-});
-
-/* ===== Smooth reveal with IntersectionObserver (reversible) ===== */
-(function setupReveal(){
-  const revealEls = document.querySelectorAll('.reveal');
-  if(!revealEls.length) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) entry.target.classList.add('in-view');
-      else entry.target.classList.remove('in-view');
-    });
-  }, { threshold: 0.18 }); // 18% visible toggles in/out
-
-  revealEls.forEach(el => observer.observe(el));
-})();
-
-/* ===== Subtle cursor dot + emphasis on hoverable elements ===== */
-(function cursorAndHover(){
-  // create cursor dot if not present (non-intrusive)
-  let cursor = document.querySelector('.cursor-dot');
-  if(!cursor){
-    cursor = document.createElement('div');
-    cursor.className = 'cursor-dot';
-    document.body.appendChild(cursor);
+    if (saved === 'dark') body.classList.add('dark-mode');
+    else body.classList.remove('dark-mode');
+    if (modeBtn) modeBtn.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+  } catch (e) {
+    if (modeBtn) modeBtn.textContent = '🌙';
   }
 
-  // move dot
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
+  /* ---------- toggle handler (safe) ---------- */
+  if (modeBtn) {
+    modeBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (e) {}
+      modeBtn.textContent = isDark ? '☀️' : '🌙';
+    });
+  }
+
+  /* ---------- ensure page lands at very top on load ---------- */
+  window.addEventListener('load', () => {
+    // instant top position; some browsers ignore 'instant' so use auto fallback
+    try { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }
+    catch (err) { window.scrollTo(0,0); }
   });
 
-  // enlarge on hover over interactive elements
-  const hoverables = ['a', 'button', '.card', '.hover-emph', '.project-card', '.btn'];
-  document.addEventListener('mouseover', e => {
-    const el = e.target.closest(hoverables.join(','));
-    if(el) cursor.classList.add('big'); // larger dot indicates interactivity
+  /* ---------- Dropdown: desktop uses CSS hover; mobile toggles on click ---------- */
+  doc.querySelectorAll('.dropdown').forEach(drop => {
+    const menu = drop.querySelector('.dropdown-menu');
+    if (!menu) return;
+    drop.addEventListener('click', (ev) => {
+      // only toggle on small screens (touch)
+      if (window.innerWidth <= 820) {
+        ev.stopPropagation();
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+      }
+    });
   });
-  document.addEventListener('mouseout', e => {
-    const el = e.target.closest(hoverables.join(','));
-    if(el) cursor.classList.remove('big');
+  // close mobile dropdown if clicking outside
+  doc.addEventListener('click', (ev) => {
+    if (window.innerWidth <= 820) {
+      doc.querySelectorAll('.dropdown .dropdown-menu').forEach(m => {
+        if (!m) return;
+        const parent = m.closest('.dropdown');
+        if (parent && !parent.contains(ev.target)) m.style.display = 'none';
+      });
+    }
   });
+
+  /* ---------- Reveal animations (IntersectionObserver) ---------- */
+  (function setupReveal() {
+    const els = doc.querySelectorAll('.reveal');
+    if (!els.length) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in-view');
+        else entry.target.classList.remove('in-view');
+      });
+    }, { threshold: 0.18 });
+    els.forEach(el => io.observe(el));
+  })();
+
+  /* ---------- Cursor dot + hover emphasis ---------- */
+  (function cursorDot() {
+    // create cursor dot if not already present
+    if (!doc.querySelector('.cursor-dot')) {
+      const dot = doc.createElement('div');
+      dot.className = 'cursor-dot';
+      doc.body.appendChild(dot);
+
+      // move dot
+      doc.addEventListener('mousemove', e => {
+        dot.style.left = e.clientX + 'px';
+        dot.style.top = e.clientY + 'px';
+      });
+
+      // enlarge on interactive elements
+      const selectors = ['a', 'button', '.mode-toggle', '.project-card', '.hover-lift', '.photo', '.card'];
+      doc.addEventListener('mouseover', e => {
+        const el = e.target.closest(selectors.join(','));
+        if (el) dot.classList.add('big');
+      });
+      doc.addEventListener('mouseout', e => {
+        const el = e.target.closest(selectors.join(','));
+        if (el) dot.classList.remove('big');
+      });
+    }
+  })();
+
 })();
-
-/* ===== Ensure page lands at very top on load ===== */
-window.addEventListener('load', () => {
-  // instant top position without animation
-  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-});
