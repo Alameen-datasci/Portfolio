@@ -1,4 +1,4 @@
-/* ======= RESET ======= */
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -7,31 +7,29 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* ======= GENERAL ======= */
+/* ===== GENERAL ===== */
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background-color: #ffffff;
   color: #000000;
   transition: background-color 0.6s ease, color 0.6s ease;
 }
 
-/* ======= DARK MODE ======= */
+/* ===== DARK MODE ===== */
 body.dark-mode {
   background-color: #0d1117;
   color: #e6edf3;
 }
 
-body.dark-mode nav {
-  background-color: #161b22;
-}
-
-body.dark-mode footer {
-  background-color: #161b22;
-}
-
-/* ======= NAVBAR ======= */
+/* ===== NAVBAR ===== */
 nav {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   background-color: #f9f9f9;
   display: flex;
@@ -40,8 +38,14 @@ nav {
   padding: 1rem 3rem;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   z-index: 1000;
+  transition: background-color 0.5s;
 }
 
+body.dark-mode nav {
+  background-color: #161b22;
+}
+
+/* ===== NAV LINKS ===== */
 nav ul {
   display: flex;
   gap: 2rem;
@@ -60,28 +64,34 @@ nav ul li a:hover {
   transform: scale(1.1);
 }
 
-/* ======= TOGGLE BUTTON ======= */
+/* ===== TOGGLE BUTTON ===== */
 #modeToggle {
   border: none;
-  background: none;
-  font-size: 1.4rem;
+  background: #0071e3;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.3rem;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s, background 0.3s;
 }
 
 #modeToggle:hover {
-  transform: rotate(20deg);
+  background: #005bb5;
+  transform: rotate(20deg) scale(1.1);
 }
 
-/* ======= CONTACT DROPDOWN ======= */
+/* ===== CONTACT DROPDOWN ===== */
 .contact-menu {
   display: none;
   position: absolute;
   top: 60px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   padding: 0.8rem;
+  transition: 0.3s;
 }
 
 body.dark-mode .contact-menu {
@@ -100,9 +110,10 @@ body.dark-mode .contact-menu {
   background-color: rgba(0, 113, 227, 0.1);
 }
 
-/* ======= SECTIONS ======= */
+/* ===== SECTIONS ===== */
 section {
   min-height: 100vh;
+  width: 100%;
   padding: 6rem 3rem;
   display: flex;
   flex-direction: column;
@@ -110,10 +121,34 @@ section {
   align-items: center;
 }
 
-/* ======= SCROLL REVEAL ANIMATION ======= */
+/* ===== HERO SECTION ===== */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+body.dark-mode .hero p {
+  color: #aaa;
+}
+
+/* ===== SCROLL ANIMATION ===== */
 .reveal {
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(60px);
   transition: all 1s ease;
 }
 
@@ -122,20 +157,7 @@ section {
   transform: translateY(0);
 }
 
-/* ======= FOOTER ======= */
-footer {
-  text-align: center;
-  padding: 2rem;
-  background-color: #f0f0f0;
-  color: #444;
-}
-
-body.dark-mode footer {
-  background-color: #161b22;
-  color: #aaa;
-}
-
-/* ======= PROJECT CARDS ======= */
+/* ===== PROJECT CARDS ===== */
 .project-card {
   width: 80%;
   max-width: 600px;
@@ -144,15 +166,48 @@ body.dark-mode footer {
   padding: 1.5rem;
   margin: 1.5rem 0;
   box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
   cursor: pointer;
 }
 
 .project-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  filter: brightness(1.1);
 }
 
 body.dark-mode .project-card {
   background-color: #1c1f26;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f0f0f0;
+  color: #444;
+  transition: background-color 0.6s, color 0.6s;
+}
+
+body.dark-mode footer {
+  background-color: #161b22;
+  color: #aaa;
+}
+
+/* ===== FOOTER LINKS ===== */
+footer .footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+footer .footer-links a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer .footer-links a:hover {
+  color: #0071e3;
 }
