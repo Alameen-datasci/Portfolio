@@ -1,89 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Your Portfolio</title>
-<link rel="stylesheet" href="Assets/style.css">
-<script defer src="Assets/script.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Portfolio</title>
+  <link rel="stylesheet" href="Assets/style.css">
+  <script defer src="Assets/script.js"></script>
 </head>
 <body>
-<header class="nav-wrap">
-<div class="logo">YourName</div>
-<nav class="nav">
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="projects.html">Projects</a></li>
-<li><a href="certificate.html">Certificates</a></li>
-<li class="dropdown">
-<button class="drop-btn">Contact ▾</button>
-<ul class="drop-list">
-<li><a href="mailto:youremail@example.com">Email</a></li>
-<li><a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a></li>
-<li><a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-<button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
-</header>
+  <header class="nav-wrap">
+    <div class="logo">YourName</div>
+    <nav class="nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="certificate.html">Certificates</a></li>
+        <li class="dropdown">
+          <button class="drop-btn">Contact ▾</button>
+          <ul class="drop-list">
+            <li><a href="mailto:youremail@example.com">Email</a></li>
+            <li><a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+  </header>
 
-<main>
-<!-- HERO -->
-<section class="hero section" id="hero">
-<div class="hero-inner">
-<div class="profile-card hoverable" data-animate>
-<img src="Assets/Images/cat.jpg" alt="Profile placeholder — replace me" class="profile-img">
-<div class="profile-label">Profile photo — replace with your portrait</div>
-</div>
+  <main>
+    <!-- HERO -->
+    <section class="hero section" id="hero">
+      <div class="hero-inner">
+        <div class="profile-card hoverable" data-animate>
+          <img src="Assets/Images/cat.jpg" alt="Profile placeholder — replace me" class="profile-img">
+          <div class="profile-label">Profile photo — replace with your portrait</div>
+        </div>
 
-<div class="hero-text">
-<h1>Hi, I’m <span class="accent">Your Name</span></h1>
-<p class="lead">Computer Science & Data Analytics student. I build interactive, polished projects and clean interfaces.</p>
-<p class="cta-row">
-<a class="btn" href="projects.html">See projects</a>
-<a class="btn ghost" href="certificate.html">Certificates</a>
-</p>
-</div>
-</div>
-</section>
+        <div class="hero-text">
+          <h1>Hi, I’m <span class="accent">Your Name</span></h1>
+          <p class="lead">Computer Science & Data Analytics student. I build interactive, polished projects and clean interfaces.</p>
+          <p class="cta-row">
+            <a class="btn" href="projects.html">See projects</a>
+            <a class="btn ghost" href="certificate.html">Certificates</a>
+          </p>
+        </div>
+      </div>
+    </section>
 
-<!-- ABOUT -->
-<section id="about" class="section about" data-animate>
-<div class="container">
-<h2>About</h2>
-<p>I’m a first-semester CS student at IIT Patna learning web & data — I enjoy clean UI, animations, and building portfolio-ready projects.</p>
-</div>
-</section>
+    <!-- ABOUT -->
+    <section id="about" class="section about" data-animate>
+      <div class="container">
+        <h2>About</h2>
+        <p>I’m a first-semester CS student at IIT Patna learning web & data — I enjoy clean UI, animations, and building portfolio-ready projects.</p>
+      </div>
+    </section>
 
-<!-- PROJECTS PREVIEW -->
-<section id="projects-preview" class="section" data-animate>
-<div class="container">
-<h2>Projects</h2>
-<div class="cards">
-<article class="card hoverable" tabindex="0">
-<img src="Assets/Images/project-sample1.jpg" alt="Project sample 1">
-<h3>Project One</h3>
-<p>Brief description of Project One. Click to view on GitHub.</p>
-<a href="https://github.com/yourusername/project-one" target="_blank" class="card-link">Open on GitHub</a>
-</article>
+    <!-- PROJECTS PREVIEW -->
+    <section id="projects-preview" class="section" data-animate>
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="cards">
+          <article class="card hoverable" tabindex="0">
+            <img src="Assets/Images/project-sample1.jpg" alt="Project sample 1">
+            <h3>Project One</h3>
+            <p>Brief description of Project One. Click to view on GitHub.</p>
+            <a href="https://github.com/yourusername/project-one" target="_blank" class="card-link">Open on GitHub</a>
+          </article>
 
-<article class="card hoverable" tabindex="0">
-<img src="Assets/Images/project-sample2.jpg" alt="Project sample 2">
-<h3>Project Two</h3>
-<p>Brief description of Project Two. Click to view on GitHub.</p>
-<a href="https://github.com/yourusername/project-two" target="_blank" class="card-link">Open on GitHub</a>
-</article>
-</div>
-<div class="center"><a class="btn" href="projects.html">See all projects</a></div>
-</div>
-</section>
+          <article class="card hoverable" tabindex="0">
+            <img src="Assets/Images/project-sample2.jpg" alt="Project sample 2">
+            <h3>Project Two</h3>
+            <p>Brief description of Project Two. Click to view on GitHub.</p>
+            <a href="https://github.com/yourusername/project-two" target="_blank" class="card-link">Open on GitHub</a>
+          </article>
+        </div>
+        <div class="center"><a class="btn" href="projects.html">See all projects</a></div>
+      </div>
+    </section>
 
-<!-- CERTIFICATES PREVIEW -->
-<section id="cert-preview" class="section" data-animate>
-<div class="container">
-<h2>Certificates</h2>
-<p>A few highlights — click to view more.</p>
-<div class="cert-grid">
+    <!-- CERTIFICATES PREVIEW -->
+    <section id="cert-preview" class="section" data-animate>
+      <div class="container">
+        <h2>Certificates</h2>
+        <p>A few highlights — click to view more.</p>
+        <div class="cert-grid">
+          <figure class="cert hoverable">
+            <img src="Assets/Images/certificate-sample1.jpg" alt="Certificate sample 1">
+            <figcaption>CS50x — Example certificate</figcaption>
+          </figure>
+
+          <figure class="cert hoverable">
+            <img src="Assets/Images/certificate-sample2.jpg" alt="Certificate sample 2">
+            <figcaption>Applied Data Science — Example certificate</figcaption>
+          </figure>
+        </div>
+        <div class="center"><a class="btn" href="certificate.html">See all certificates</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© 2025 Your Name</div>
+    <div class="social-inline">
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+  <!-- Custom cursor -->
+  <div id="cursor" class="cursor"></div>
+</body>
 </html>
