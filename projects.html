@@ -1,49 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects | David</title>
-  <link rel="stylesheet" href="libs/bootstrap.min.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alameen — Projects</title>
+
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https:; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; img-src 'self' data: https:;">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">David</a>
-      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a class="navbar-brand" href="index.html">Alameen</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"> <span class="navbar-toggler-icon"></span> </button>
       <div class="collapse navbar-collapse" id="nav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link active" href="project.html">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="certificate.html">Certificates</a></li>
         </ul>
-        <button id="theme-toggle" class="btn btn-outline-light ms-3 rounded-circle">🌓</button>
+        <button id="dark-toggle" class="btn btn-outline-light ms-3 rounded-circle">🌙</button>
       </div>
     </div>
   </nav>
 
-  <section class="project-section container my-5 pt-5">
-    <h1 class="text-center mb-5">My Projects</h1>
+  <main class="container" style="padding-top:90px">
+    <header class="text-center mb-5">
+      <h1 class="fw-bold">Projects</h1>
+      <p class="small text-muted">Click a project on the left to scroll — or open directly with URL hash.</p>
+    </header>
 
-    <div id="netflix" class="project-detail mb-5">
-      <img src="assets/images/netflix-analysis.jpg" class="project-banner" alt="">
-      <h2>Netflix Data Analysis</h2>
-      <p>Analyzed Netflix dataset using Pandas, Matplotlib, and Seaborn to find insights on content trends, genres, and release years.</p>
-      <a href="https://github.com/yourgithub/netflix-analysis" target="_blank" class="btn btn-outline-light">GitHub</a>
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="list-group">
+          <button class="list-group-item list-group-item-action project-index" data-target="netflix">Netflix Data Analysis</button>
+          <button class="list-group-item list-group-item-action project-index" data-target="expense">Expense Tracker</button>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <article id="netflix" class="project-detail mb-5">
+          <img src="assets/images/netflix-analysis.jpg" class="project-banner mb-3" alt="">
+          <h2>Netflix Data Analysis</h2>
+          <p>Exploratory Data Analysis of Netflix titles. Data cleaning, visualization, insights and reproducible notebooks.</p>
+          <p><strong>Highlights:</strong></p>
+          <ul>
+            <li>Data cleaning & feature engineering</li>
+            <li>Time-series of releases and genre insights</li>
+            <li>Jupyter notebooks & charts</li>
+          </ul>
+          <a class="btn btn-primary" href="https://github.com/Alameen-datasci/netflix-analysis" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </article>
+
+        <article id="expense" class="project-detail mb-5">
+          <img src="assets/images/expense-tracker.jpg" class="project-banner mb-3" alt="">
+          <h2>Expense Tracker</h2>
+          <p>A simple expense logger with CSV storage and quick CLI & web demo. Useful for learning persistence and file handling.</p>
+          <ul>
+            <li>CLI and small Flask demo</li>
+            <li>CSV export and simple charts</li>
+          </ul>
+          <a class="btn btn-primary" href="https://github.com/Alameen-datasci/expense-tracker" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </article>
+      </div>
     </div>
+  </main>
 
-    <div id="expense" class="project-detail mb-5">
-      <img src="assets/images/expense-tracker.jpg" class="project-banner" alt="">
-      <h2>Expense Tracker</h2>
-      <p>A full-stack personal finance tracker built using Flask and SQLite. Helps users log daily expenses and visualize trends.</p>
-      <a href="https://github.com/yourgithub/expense-tracker" target="_blank" class="btn btn-outline-light">GitHub</a>
-    </div>
-  </section>
+  <footer class="text-center py-4 mt-5">© 2025 Alameen</footer>
 
-  <script src="libs/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
   <script src="assets/js/script.js"></script>
+  <script>
+    // left list scroll to project
+    document.querySelectorAll('.project-index').forEach(btn=>{
+      btn.addEventListener('click', ()=> {
+        const id = btn.dataset.target;
+        const el = document.getElementById(id);
+        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+
+    // if page opened with a hash (example: project.html#netflix) scroll there
+    window.addEventListener('load', ()=>{
+      const hash = location.hash.replace('#','');
+      if(hash){
+        const el = document.getElementById(hash);
+        if(el) setTimeout(()=> el.scrollIntoView({behavior:'smooth', block:'start'}), 200);
+      }
+    });
+  </script>
 </body>
 </html>
