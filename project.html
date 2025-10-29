@@ -3,69 +3,54 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Projects — Your Name</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <title>Projects — Al Ameen</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/script.js" defer></script>
 </head>
-<body class="light-mode">
-  <header>
-    <nav class="navbar">
-      <div class="logo">YourPortfolio</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a class="active" href="projects.html">Projects</a></li>
-        <li><a href="certificate.html">Certificates</a></li>
-        <li class="dropdown">
-          <a href="#" aria-haspopup="true">Contact ▾</a>
-          <ul class="dropdown-menu">
-            <li><a href="mailto:example@email.com">📧 Email</a></li>
-            <li><a href="https://linkedin.com" target="_blank" rel="noopener">💼 LinkedIn</a></li>
-            <li><a href="https://github.com" target="_blank" rel="noopener">🐙 GitHub</a></li>
-          </ul>
-        </li>
-      </ul>
-      <button id="mode-toggle" class="mode-toggle" aria-label="Toggle theme">🌙</button>
-    </nav>
-  </header>
+<body class="light">
+  <nav class="navbar">
+    <div class="logo">MyPortfolio</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a class="active" href="project.html">Projects</a></li>
+      <li><a href="certificate.html">Certificates</a></li>
+      <li class="dropdown" id="contact-dropdown-2">
+        <button class="dropdown-toggle" aria-expanded="false">Contact ▾</button>
+        <ul class="dropdown-menu">
+          <li><a href="mailto:alameenallu7306@gmail.com">📧 Email</a></li>
+          <li><a href="https://linkedin.com/in/Alameen-datasci" target="_blank">💼 LinkedIn</a></li>
+          <li><a href="https://github.com/Alameen-datasci" target="_blank">🐙 GitHub</a></li>
+        </ul>
+      </li>
+    </ul>
+    <button id="mode-toggle">🌙</button>
+  </nav>
 
-  <main class="container section">
-    <h1 class="page-title fade-in" data-animate>Projects</h1>
-    <p class="subtitle fade-in" data-animate>Click a project card to open its repository.</p>
+  <main class="section">
+    <div class="container">
+      <h1 class="section-title">Projects</h1>
+      <p class="muted">Click any card to open the repository.</p>
 
-    <div class="project-grid" data-animate>
-      <a class="project-card hoverable" href="https://github.com/yourusername/project-one" target="_blank" rel="noopener">
-        <div class="project-media"><img src="assets/images/sample-project1.jpg" alt="Project One"></div>
-        <div class="project-content">
-          <h3>Project One</h3>
-          <p>Interactive COVID dashboard — Python, Plotly, Flask.</p>
-        </div>
-      </a>
+      <div class="grid">
+        <a class="project-card hover-lift" href="https://github.com/Alameen-datasci/project-one" target="_blank" rel="noopener">
+          <img src="assets/images/sample-project1.jpg" alt="Project One">
+          <div class="project-body"><h3>Project One</h3><p class="muted">Python, Plotly, Flask.</p></div>
+        </a>
 
-      <a class="project-card hoverable" href="https://github.com/yourusername/project-two" target="_blank" rel="noopener">
-        <div class="project-media"><img src="assets/images/sample-project2.jpg" alt="Project Two"></div>
-        <div class="project-content">
-          <h3>Project Two</h3>
-          <p>Movie recommender — pandas, sklearn, collaborative filtering.</p>
-        </div>
-      </a>
+        <a class="project-card hover-lift" href="https://github.com/Alameen-datasci/project-two" target="_blank" rel="noopener">
+          <img src="assets/images/sample-project2.jpg" alt="Project Two">
+          <div class="project-body"><h3>Project Two</h3><p class="muted">Pandas, sklearn.</p></div>
+        </a>
+      </div>
 
-      <!-- duplicate these cards for more projects -->
+      <div class="center"><a class="btn" href="index.html">Back to Home</a></div>
     </div>
-
-    <div class="center"><a class="btn" href="index.html">Back to Home</a></div>
   </main>
 
-  <footer>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="index.html#about">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="certificate.html">Certificates</a>
-      <a href="mailto:example@email.com">Contact</a>
-    </div>
-    <p>© 2025 Your Name</p>
+  <footer class="site-footer">
+    <div class="footer-links"><a href="index.html">Home</a><a href="index.html#about">About</a></div>
+    <p class="muted">© 2025 Al Ameen</p>
   </footer>
-
-  <script src="assets/script.js"></script>
 </body>
 </html>
