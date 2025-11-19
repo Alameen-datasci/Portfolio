@@ -1,97 +1,161 @@
+/* style.css */
+/* 
+  Central stylesheet for the whole site.
+  - Default white theme variables are defined in :root
+  - Dark mode toggles variables when .dark-mode is on <body>
+  - To change profile picture: update the background-image below in .profile-pic
+    Example:
+      .profile-pic { background-image: url('assets/myphoto.jpg'); }
+*/
+
+/* ================== THEME VARIABLES ================== */
 :root{
-  --bg: #ffffff;
-  --fg: #0b1220;
-  --muted: #6b7280;
-  --card: #f6f7f9;
-  --accent: #0b5cff;
-  --shadow: 0 12px 36px rgba(2,6,23,0.08);
-  --nav-h: 68px;
-  --radius: 12px;
-  --max-w: 1100px;
-  --ease: cubic-bezier(.2,.9,.2,1);
+  --bg: #ffffff;          /* default page background (white) */
+  --surface: #f6f7fb;     /* surfaces like header/footer, cards */
+  --text: #222;           /* main text color */
+  --muted: #666;          /* muted text color */
+  --accent: #007bff;      /* accent color (buttons, links) */
+  --card-shadow: 0 10px 30px rgba(20,20,40,0.07);
 }
 
-/* dark vars toggled by .dark-mode */
+/* Dark theme values when body has .dark-mode */
 body.dark-mode{
-  --bg: #071018;
-  --fg: #e8eef8;
-  --muted: #98a3b3;
-  --card: #0f1720;
-  --accent: #4ea3ff;
-  --shadow: 0 12px 40px rgba(0,0,0,0.6);
+  --bg: #0f1113;
+  --surface: #141516;
+  --text: #e6e6e6;
+  --muted: #bfbfbf;
+  --accent: #66aaff;
 }
 
+/* ================== BASE ================== */
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  transition: background 300ms ease, color 300ms ease;
+  line-height:1.5;
+}
+a{color:var(--accent); text-decoration:none}
 
-/* NAVBAR */
-.navbar{position:fixed;left:0;right:0;top:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:linear-gradient(180deg, rgba(255,255,255,0.86), transparent);backdrop-filter:blur(6px);z-index:1200}
-body.dark-mode .navbar{background:linear-gradient(180deg, rgba(10,12,16,0.86), transparent)}
-.logo{font-weight:700;font-size:18px;letter-spacing:0.4px}
-.nav-links{display:flex;gap:14px;align-items:center;list-style:none;margin:0;padding:0}
-.nav-links a{display:inline-block;padding:8px 10px;border-radius:8px;font-weight:700;font-size:14px;color:var(--fg);transition:transform .12s,background .12s}
-.nav-links a:hover{transform:translateY(-3px);background:var(--card)}
-.nav-links a.active{box-shadow:inset 0 -3px 0 var(--accent)}
+/* reusable section spacing */
+.section{padding:4rem 1.5rem}
 
-/* dropdown */
-.dropdown{position:relative}
-.dropdown .dropdown-toggle{background:none;border:0;padding:8px 10px;font-weight:700;cursor:pointer;color:var(--fg)}
-.dropdown .dropdown-menu{display:none;position:absolute;right:0;top:calc(var(--nav-h) + 8px);background:var(--card);padding:8px;border-radius:10px;box-shadow:var(--shadow);min-width:180px}
-.dropdown .dropdown-menu li{padding:6px 8px}
-.dropdown .dropdown-menu a{color:var(--fg);font-weight:700}
-.dropdown.open .dropdown-menu{display:block}
+/* ================== HEADER ================== */
+/* Site header: sticky with subtle border */
+.site-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:1rem 2rem;
+  position:sticky;
+  top:0;
+  background:var(--surface);
+  z-index:9999;
+  border-bottom:1px solid rgba(0,0,0,0.04);
+}
+.logo{font-weight:700}
+.main-nav ul{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
+.main-nav a{padding:0.4rem 0.6rem;border-radius:6px;display:inline-block}
+.main-nav a:hover{transform:translateY(-3px);transition:transform 180ms ease}
 
-/* mode toggle */
-#mode-toggle{appearance:none;border:0;cursor:pointer;width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--accent), color-mix(in srgb,var(--accent) 70%, black 10%));color:#fff;font-weight:700;box-shadow:0 10px 30px rgba(11,92,255,0.16);transition:transform .18s}
-#mode-toggle:hover{transform:scale(1.06)}
+/* Dropdown menu styling
+   - CSS displays dropdown when parent has :hover or :focus-within for keyboard accessibility
+*/
+.nav-item{position:relative}
+.drop-btn{
+  background:transparent;border:0;padding:0.3rem 0.6rem;border-radius:6px;cursor:pointer;
+  color:var(--text);
+}
+.dropdown-menu{
+  position:absolute;top:calc(100% + 6px);left:0;
+  background:var(--bg);box-shadow:var(--card-shadow);padding:0.5rem;border-radius:8px;
+  display:none;min-width:180px;
+}
+.nav-item:focus-within .dropdown-menu, .nav-item:hover .dropdown-menu{display:block}
+.dropdown-menu a{display:block;padding:0.5rem 0.7rem;border-radius:6px}
+.dropdown-menu a:hover{background:rgba(0,0,0,0.04)}
 
-/* MAIN / HERO */
-main{padding-top:calc(var(--nav-h) + 18px)}
-.hero{min-height:72vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:28px 20px}
-.profile-img{width:140px;height:140px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,0.6);box-shadow:var(--shadow)}
+/* dark mode toggle button */
+.dark-toggle{background:transparent;border:0;cursor:pointer;font-size:1.1rem}
+
+/* ================== HERO ================== */
+.hero{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.hero-left{display:flex;flex-direction:column;align-items:center;gap:0.75rem}
+
+/* Profile pic placeholder:
+   - Replace background-image URL with your own image path
+   - Example: background-image: url('assets/my-profile.jpg');
+   - You can use the inline controls on index.html to change the width/height live.
+*/
+.profile-pic{
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  background:#cccccc;
+  background-image: url('your-photo.jpg'); /* <-- REPLACE this path with your photo */
+  background-size:cover;
+  background-position:center;
+  box-shadow:var(--card-shadow);
+  transition:transform 220ms ease, box-shadow 220ms ease;
+}
+.profile-pic:hover{transform:translateY(-6px) scale(1.03)}
+
+.img-controls{display:flex;gap:0.5rem;align-items:center}
+.img-controls input{width:72px;padding:4px;border-radius:6px;border:1px solid rgba(0,0,0,0.08)}
+
+.hero-right{max-width:640px}
+.lead{color:var(--muted);font-size:1.05rem}
+.cta{
+  display:inline-block;margin-top:0.75rem;padding:0.6rem 1rem;border-radius:8px;
+  background:var(--accent);color:white;
+  transition:transform 180ms ease;
+}
+.cta:hover{transform:translateY(-4px)}
+
+/* ================== SKILLS ================== */
+.skills{display:flex;flex-wrap:wrap;gap:0.5rem}
+.skill-chip{
+  border:0;padding:0.6rem 0.9rem;border-radius:999px;background:var(--surface);
+  cursor:pointer;transition:transform 180ms ease,box-shadow 180ms ease;
+  box-shadow: 0 6px 18px rgba(20,20,40,0.03);
+}
+.skill-chip:hover,.skill-chip:focus{transform:translateY(-6px) scale(1.03);box-shadow:var(--card-shadow);outline:none}
+
+/* ================== CARDS GRID ================== */
+.card-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;
+}
+.card{
+  display:block;background:var(--bg);border-radius:12px;overflow:hidden;
+  box-shadow:var(--card-shadow);transition:transform 220ms ease,box-shadow 220ms ease;
+  border:1px solid rgba(0,0,0,0.04);
+}
+.card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 18px 40px rgba(0,0,0,0.12)}
+.card-img{width:100%;height:140px;object-fit:cover;display:block}
+.card-body{padding:0.85rem}
+.card-title{margin:0 0 0.25rem 0;font-size:1.05rem}
+.card-sub{margin:0;color:var(--muted);font-size:0.9rem}
+
+/* ================== DETAIL PAGES ================== */
+.detail-page .detail-hero{display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap;padding:2rem}
+.detail-img-wrap{flex:1 1 420px}
+.detail-img{width:100%;max-width:900px;border-radius:8px;box-shadow:var(--card-shadow)}
+.detail-content{flex:1 1 360px}
 .muted{color:var(--muted)}
+.btn{display:inline-block;padding:0.55rem 0.9rem;border-radius:8px;background:var(--surface);border:1px solid rgba(0,0,0,0.04);margin-right:0.5rem}
 
-/* small photo row */
-.photo-row{display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:12px}
-.photo{width:92px;height:92px;border-radius:12px;overflow:hidden;background:var(--card);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center}
-.photo img{width:100%;height:100%;object-fit:cover}
-.hover-lift{transition:transform .28s var(--ease),box-shadow .28s,var(--ease);will-change:transform}
-.hover-lift:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 18px 40px rgba(2,6,23,0.12);filter:saturate(1.08)}
+/* ================== FOOTER ================== */
+footer{padding:1.25rem;text-align:center;background:var(--surface);border-top:1px solid rgba(0,0,0,0.04)}
+.footer-inner{display:flex;flex-direction:column;gap:0.5rem;align-items:center}
+.footer-contacts a{margin:0 0.4rem}
 
-/* sections */
-.section{padding:48px 20px;max-width:var(--max-w);margin:0 auto;text-align:center}
-.section-title{font-size:1.1rem;margin-bottom:8px;font-weight:700}
-
-/* cards / grids */
-.card-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px}
-.card{background:var(--card);border-radius:12px;padding:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;align-items:start}
-.card img{width:100%;height:160px;object-fit:cover;border-radius:8px}
-.card h3{margin:0}
-.card-link{margin-top:auto;color:var(--accent);font-weight:800}
-
-/* buttons */
-.btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:white;font-weight:800;margin-top:12px;transition:transform .14s}
-.btn:hover{transform:translateY(-4px)}
-.btn.ghost{background:transparent;border:1px solid rgba(11,92,255,0.08);color:var(--fg)}
-
-/* project / certificate lists */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
-.project-card{background:var(--card);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
-
-/* reveal animation */
-.reveal{opacity:0;transform:translateY(22px) scale(.997);filter:saturate(.6);transition:opacity .7s ease,transform .8s var(--ease),filter .6s}
-.reveal.in-view{opacity:1;transform:translateY(0) scale(1);filter:saturate(1)}
-
-/* footer */
-.site-footer{display:flex;justify-content:space-between;align-items:center;padding:24px 20px;border-top:1px solid rgba(2,6,23,0.04);color:var(--muted)}
-body.dark-mode .site-footer{border-top-color:rgba(255,255,255,0.04)}
-
-/* responsive */
-@media (max-width:780px){
-  .nav-links{gap:8px}
-  .profile-img{width:110px;height:110px}
-  .photo{width:72px;height:72px}
-  .card img{height:140px}
-  .site-footer{flex-direction:column;gap:10px;text-align:center}
+/* ================== RESPONSIVE ================== */
+@media (max-width:880px){
+  .hero{flex-direction:column}
+  .profile-pic{width:160px;height:160px}
 }
