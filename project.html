@@ -1,56 +1,71 @@
+<!-- project.html -->
+<!--
+  Detail page for a project.
+  - Replace images, description and GitHub/demo links.
+  - Reuses style.css and script.js for consistent look and behavior.
+-->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Projects — Al Ameen</title>
-  <link rel="stylesheet" href="assets/style.css">
-  <script src="assets/script.js" defer></script>
+  <title>Project — Data Visualization</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="light">
-  <nav class="navbar">
-    <div class="logo">MyPortfolio</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#about">About</a></li>
-      <li><a class="active" href="project.html">Projects</a></li>
-      <li><a href="certificate.html">Certificates</a></li>
-      <li class="dropdown" id="contact-dropdown-2">
-        <button class="dropdown-toggle" aria-expanded="false">Contact ▾</button>
-        <ul class="dropdown-menu">
-          <li><a href="mailto:alameenallu7306@gmail.com">📧 Email</a></li>
-          <li><a href="https://linkedin.com/in/Alameen-datasci" target="_blank">💼 LinkedIn</a></li>
-          <li><a href="https://github.com/Alameen-datasci" target="_blank">🐙 GitHub</a></li>
-        </ul>
-      </li>
-    </ul>
-    <button id="mode-toggle">🌙</button>
-  </nav>
+<body>
+  <header class="site-header">
+    <div class="logo"><a href="index.html">My Portfolio</a></div>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a class="nav-link" href="index.html#home">Home</a></li>
+        <li><a class="nav-link" href="index.html#about">About</a></li>
+        <li class="nav-item">
+          <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Contact ▾</button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a role="menuitem" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a role="menuitem" href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a role="menuitem" href="mailto:youremail@gmail.com">Gmail</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <button id="darkToggle" class="dark-toggle" aria-pressed="false">🌙</button>
+  </header>
 
-  <main class="section">
-    <div class="container">
-      <h1 class="section-title">Projects</h1>
-      <p class="muted">Click any card to open the repository.</p>
-
-      <div class="grid">
-        <a class="project-card hover-lift" href="https://github.com/Alameen-datasci/project-one" target="_blank" rel="noopener">
-          <img src="assets/images/sample-project1.jpg" alt="Project One">
-          <div class="project-body"><h3>Project One</h3><p class="muted">Python, Plotly, Flask.</p></div>
-        </a>
-
-        <a class="project-card hover-lift" href="https://github.com/Alameen-datasci/project-two" target="_blank" rel="noopener">
-          <img src="assets/images/sample-project2.jpg" alt="Project Two">
-          <div class="project-body"><h3>Project Two</h3><p class="muted">Pandas, sklearn.</p></div>
-        </a>
+  <main class="detail-page">
+    <section class="detail-hero">
+      <div class="detail-img-wrap">
+        <!-- Replace the src with a larger project screenshot -->
+        <img class="detail-img" src="your-project-photo.jpg" alt="Project large image" />
       </div>
 
-      <div class="center"><a class="btn" href="index.html">Back to Home</a></div>
-    </div>
+      <div class="detail-content">
+        <h1>Data Visualization Project</h1>
+        <p class="muted">Technologies: Python, Pandas, Matplotlib, Plotly</p>
+
+        <!-- Provide a thorough explanation of the project -->
+        <p>
+          An interactive dashboard that visualizes exploratory data analysis, features filters,
+          downloadable charts and modular notebooks. The dashboard demonstrates feature selection,
+          EDA, and storytelling with charts.
+        </p>
+
+        <div class="project-links">
+          <a class="btn" href="https://github.com/yourusername/your-repo" target="_blank" rel="noopener">View on GitHub</a>
+          <a class="btn" href="#" aria-disabled="true">Live demo (coming soon)</a>
+        </div>
+
+        <a class="btn" href="index.html#projects">← Back to projects</a>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-links"><a href="index.html">Home</a><a href="index.html#about">About</a></div>
-    <p class="muted">© 2025 Al Ameen</p>
+  <footer>
+    <div class="footer-inner">
+      <p>© 2025 Your Name. All rights reserved.</p>
+    </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
