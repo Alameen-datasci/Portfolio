@@ -1,92 +1,160 @@
-<!-- ========================================= -->
-<!-- FILE: index.html -->
-<!-- ========================================= -->
-<!-- # index.html - Main portfolio page
-# This file links to templates/style.css for styles and templates/script.js for interactivity.
-# Replace placeholder image URLs (your-photo.jpg, your-project-photo.jpg, your-certificate-photo.jpg)
-# with your own images. You can adjust the profile image size in the CSS under .profile-pic.
+<!-- index.html -->
+<!--
+  Main portfolio landing page.
+  - Default theme: white
+  - Replace placeholder image URLs with your own images (see .profile-pic background and <img> srcs)
+  - Many comments included to explain each block and where to edit
 -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>My Portfolio</title>
-<!-- # Link to central stylesheet (in templates/) -->
-<link rel="stylesheet" href="templates/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Portfolio</title>
+  <!-- Link to stylesheet (place style.css in the same folder as this HTML file) -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<!-- ================= HEADER ================= -->
-<header class="site-header">
-<!-- # Logo / site title -->
-<div class="logo">My Portfolio</div>
+  <!-- ========================= HEADER ========================= -->
+  <!-- Header contains site title, nav links and dark-mode toggle -->
+  <header class="site-header">
+    <!-- # Logo / site title -->
+    <div class="logo">My Portfolio</div>
 
-<!-- # Navigation -->
-<nav class="main-nav">
-<ul>
-<li><a href="index.html#home" class="nav-link">Home</a></li>
-<li><a href="index.html#about" class="nav-link">About</a></li>
-<li class="nav-item dropdown">
-<!-- # Contact button with dropdown on hover/focus -->
-<button class="drop-btn" aria-haspopup="true" aria-expanded="false">Contact ▾</button>
-<ul class="dropdown-menu" aria-label="Contact links">
-<li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
-<li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
-<li><a href="mailto:youremail@gmail.com">Gmail</a></li>
-</ul>
-</li>
-</ul>
-</nav>
+    <!-- # Primary navigation -->
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <!-- # Home anchors to hero -->
+        <li><a class="nav-link" href="#home">Home</a></li>
+        <!-- # About anchors to about section -->
+        <li><a class="nav-link" href="#about">About</a></li>
 
-<!-- # Dark mode toggle -->
-<button id="darkToggle" class="dark-toggle" aria-pressed="false">🌙</button>
-</header>
+        <!-- # Contact: this is a button that opens a dropdown with LinkedIn / GitHub / Gmail -->
+        <li class="nav-item">
+          <!-- NOTE: aria-expanded toggled by JavaScript for keyboard users -->
+          <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Contact ▾</button>
 
-<!-- ================= HERO / INTRO ================= -->
-<main>
-<section id="home" class="hero section">
-<!-- # Left column: circular profile photo placeholder -->
-<div class="hero-left">
-<div class="profile-pic" id="profilePic" title="Replace this background-image in templates/style.css"></div>
-<!-- # Small controls to adjust image size (these manipulate inline styles via JS) -->
-<div class="img-controls" aria-hidden="false">
-<label>W: <input id="imgWidth" type="number" value="200" min="50" max="1000"> px</label>
-<label>H: <input id="imgHeight" type="number" value="200" min="50" max="1000"> px</label>
-<button id="applyImgSize">Apply</button>
-</div>
-</div>
+          <!-- Dropdown menu that appears on hover / focus-within -->
+          <ul class="dropdown-menu" role="menu" aria-label="Contact links">
+            <li role="none"><a role="menuitem" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li role="none"><a role="menuitem" href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+            <li role="none"><a role="menuitem" href="mailto:youremail@gmail.com">Gmail</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
 
-<!-- # Right column: welcome text -->
-<div class="hero-right">
-<h1>Welcome to My Portfolio</h1>
-<p class="lead">I'm a Data Science student focused on analysis, visualization, and building data-driven projects.</p>
-<a class="cta" href="#projects">See my projects →</a>
-</div>
-</section>
+    <!-- # Dark mode toggle - changes to sun icon when active -->
+    <button id="darkToggle" class="dark-toggle" aria-pressed="false" title="Toggle dark mode">🌙</button>
+  </header>
 
-<!-- ================= ABOUT ================= -->
-<section id="about" class="section">
-<h2>About Me</h2>
-<p>
-I am pursuing a B.S. in Computer Science and Data Analytics. I enjoy transforming raw data into
-meaningful stories and building reproducible analyses.
-</p>
-</section>
+  <!-- ========================= MAIN / HERO ========================= -->
+  <main>
+    <!-- HERO: left = circular photo, right = welcome text and CTA -->
+    <section id="home" class="hero section">
+      <div class="hero-left">
+        <!--
+          .profile-pic uses a background-image in CSS as a placeholder.
+          Replace the URL in style.css (see comment near .profile-pic) OR add an <img> here.
+          There are image width/height controls beneath so you can preview sizes locally.
+        -->
+        <div id="profilePic" class="profile-pic" title="Replace background-image in style.css"></div>
 
-<!-- ================= SKILLS (interactive) ================= -->
-<section id="skills" class="section">
-<h2>Skills</h2>
-<!-- # Interactive skill chips. JS will add simple animations and keyboard-focus handling. -->
-<div class="skills" role="list">
-<button class="skill-chip" role="listitem">Python</button>
-<button class="skill-chip" role="listitem">Pandas</button>
-<button class="skill-chip" role="listitem">NumPy</button>
-<button class="skill-chip" role="listitem">Matplotlib</button>
-<button class="skill-chip" role="listitem">Data Analysis</button>
-<button class="skill-chip" role="listitem">Machine Learning</button>
-</div>
-</section>
+        <!-- Small image size controls so you can change width/height on the fly -->
+        <div class="img-controls" aria-hidden="false">
+          <label>W: <input id="imgWidth" type="number" value="200" min="50" max="1000"> px</label>
+          <label>H: <input id="imgHeight" type="number" value="200" min="50" max="1000"> px</label>
+          <button id="applyImgSize">Apply</button>
+        </div>
+      </div>
 
-<!-- ================= CERTIFICATES ================= -->
-<section id="certificates" class="section">
+      <div class="hero-right">
+        <h1>Welcome to My Portfolio</h1>
+        <p class="lead">I'm a Data Science student passionate about analysis, visualization, and machine learning.</p>
+        <a class="cta" href="#projects">See my projects →</a>
+      </div>
+    </section>
+
+    <!-- ========================= ABOUT ========================= -->
+    <section id="about" class="section">
+      <h2>About Me</h2>
+      <p>
+        I'm currently pursuing a B.S. in Computer Science & Data Analytics. I enjoy building reproducible
+        data analyses, dashboards, and storytelling with visuals.
+      </p>
+    </section>
+
+    <!-- ========================= SKILLS (interactive) ========================= -->
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+
+      <!--
+        Skill chips are interactive buttons (not plain text).
+        JavaScript animates them on hover/click and they are keyboard accessible.
+      -->
+      <div class="skills" role="list">
+        <button class="skill-chip" role="listitem" data-skill="Python">Python</button>
+        <button class="skill-chip" role="listitem" data-skill="Pandas">Pandas</button>
+        <button class="skill-chip" role="listitem" data-skill="NumPy">NumPy</button>
+        <button class="skill-chip" role="listitem" data-skill="Matplotlib">Matplotlib</button>
+        <button class="skill-chip" role="listitem" data-skill="Data Analysis">Data Analysis</button>
+        <button class="skill-chip" role="listitem" data-skill="Machine Learning">Machine Learning</button>
+      </div>
+    </section>
+
+    <!-- ========================= CERTIFICATES ========================= -->
+    <section id="certificates" class="section">
+      <h2>Certificates</h2>
+
+      <!-- .card-grid contains small card templates. Clicking a card opens certificate.html -->
+      <div class="card-grid">
+        <!-- Card template: replace src and text as needed. Click goes to certificate.html -->
+        <a class="card" href="certificate.html" aria-label="Open CS50x certificate">
+          <!-- Replace the src with your certificate thumbnail -->
+          <img class="card-img" src="your-certificate-photo.jpg" alt="Certificate thumbnail" />
+          <div class="card-body">
+            <h3 class="card-title">CS50x Certificate</h3>
+            <p class="card-sub">Intro to Computer Science — HarvardX</p>
+          </div>
+        </a>
+
+        <!-- Copy this card block to add more certificates -->
+      </div>
+    </section>
+
+    <!-- ========================= PROJECTS ========================= -->
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+
+      <!-- Project cards - click to open project.html for details -->
+      <div class="card-grid">
+        <a class="card" href="project.html" aria-label="Open Data Visualization project">
+          <!-- Replace with your project thumbnail -->
+          <img class="card-img" src="your-project-photo.jpg" alt="Project thumbnail" />
+          <div class="card-body">
+            <h3 class="card-title">Data Visualization Project</h3>
+            <p class="card-sub">Interactive charts and EDA notebooks</p>
+          </div>
+        </a>
+
+        <!-- Copy card to add more projects -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================= FOOTER ========================= -->
+  <footer>
+    <div class="footer-inner">
+      <p>© 2025 Your Name. All rights reserved.</p>
+      <div class="footer-contacts">
+        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:youremail@gmail.com">Gmail</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Link to script file (place script.js in the same folder as this HTML file) -->
+  <script src="script.js"></script>
+</body>
 </html>
