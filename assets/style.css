@@ -183,7 +183,7 @@ body.dark-mode main > section:nth-of-type(even){
   height:200px;
   border-radius:50%;
   background:#cccccc;
-  background-image:url('assets/images/IMG-20250817-WA0002.jpg');
+  background-image:url('images/IMG-20250817-WA0002.jpg');
   background-size:cover;
   background-position:center;
   box-shadow:var(--card-shadow);
