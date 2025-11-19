@@ -1,8 +1,8 @@
 <!-- project.html -->
 <!--
-  Detail page for a project.
-  - Replace images, description and GitHub/demo links.
-  - Reuses style.css and script.js for consistent look and behavior.
+  Project detail page (large view)
+  - Reuse assets/style.css and assets/script.js
+  - Replace images, descriptions, and GitHub/demo links below.
 -->
 <!doctype html>
 <html lang="en">
@@ -10,52 +10,58 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Project — Data Visualization</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="logo"><a href="index.html">My Portfolio</a></div>
+
     <nav class="main-nav" aria-label="Main navigation">
-      <ul>
+      <ul class="nav-list">
         <li><a class="nav-link" href="index.html#home">Home</a></li>
         <li><a class="nav-link" href="index.html#about">About</a></li>
+        <li><a class="nav-link" href="certificate.html">Certificates</a></li>
+        <li><a class="nav-link" href="project.html">Projects</a></li>
+
         <li class="nav-item">
           <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Contact ▾</button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a role="menuitem" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a role="menuitem" href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a role="menuitem" href="mailto:youremail@gmail.com">Gmail</a></li>
+          <ul class="dropdown-menu" role="menu" aria-label="Contact links">
+            <li role="none"><a role="menuitem" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li role="none"><a role="menuitem" href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+            <li role="none"><a role="menuitem" href="mailto:youremail@gmail.com">Gmail</a></li>
           </ul>
         </li>
       </ul>
     </nav>
-    <button id="darkToggle" class="dark-toggle" aria-pressed="false">🌙</button>
+
+    <button id="darkToggle" class="dark-toggle" aria-pressed="false" title="Toggle dark mode">🌙</button>
   </header>
 
   <main class="detail-page">
-    <section class="detail-hero">
-      <div class="detail-img-wrap">
-        <!-- Replace the src with a larger project screenshot -->
-        <img class="detail-img" src="your-project-photo.jpg" alt="Project large image" />
-      </div>
-
-      <div class="detail-content">
-        <h1>Data Visualization Project</h1>
-        <p class="muted">Technologies: Python, Pandas, Matplotlib, Plotly</p>
-
-        <!-- Provide a thorough explanation of the project -->
-        <p>
-          An interactive dashboard that visualizes exploratory data analysis, features filters,
-          downloadable charts and modular notebooks. The dashboard demonstrates feature selection,
-          EDA, and storytelling with charts.
-        </p>
-
-        <div class="project-links">
-          <a class="btn" href="https://github.com/yourusername/your-repo" target="_blank" rel="noopener">View on GitHub</a>
-          <a class="btn" href="#" aria-disabled="true">Live demo (coming soon)</a>
+    <section class="detail-hero section">
+      <div class="container">
+        <div class="detail-img-wrap">
+          <!-- Replace this src with your project screenshot -->
+          <img class="detail-img" src="assets/your-project-photo.jpg" alt="Project large image" />
         </div>
 
-        <a class="btn" href="index.html#projects">← Back to projects</a>
+        <div class="detail-content">
+          <h1>Data Visualization Project</h1>
+          <p class="muted">Technologies: Python, Pandas, Matplotlib, Plotly</p>
+
+          <p>
+            An interactive dashboard showcasing exploratory data analysis, filters, and downloadable charts.
+            The project demonstrates EDA, visualization best practices, and reproducible code.
+          </p>
+
+          <div class="project-links">
+            <a class="btn" href="https://github.com/yourusername/your-repo" target="_blank" rel="noopener">View on GitHub</a>
+            <a class="btn" href="#" aria-disabled="true">Live demo (coming soon)</a>
+          </div>
+
+          <a class="btn" href="index.html#projects">← Back to projects</a>
+        </div>
       </div>
     </section>
   </main>
@@ -66,6 +72,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="assets/script.js" defer></script>
 </body>
 </html>
