@@ -1,109 +1,180 @@
-// Defensive single-file JS for the site.
-// - theme toggle (#mode-toggle) with persisted preference
-// - dropdown behavior (hover on desktop, click toggle on touch)
-// - reveal animations (IntersectionObserver, reversible)
-// - ensure page top on load
-// - subtle cursor dot (non-intrusive)
+/* script.js */
+/*
+  Site-wide JavaScript:
+  - Dark mode toggle (persists preference to localStorage)
+  - Dropdown keyboard accessibility helpers
+  - Skill-chip hover/click animations
+  - Image size controls for profile preview on index.html
+  - Small entrance animations for cards
+*/
 
-/* ---------- helpers ---------- */
-const qs = s => document.querySelector(s);
-const qsa = s => Array.from(document.querySelectorAll(s));
+/* Immediately-invoked function to avoid polluting global scope */
+(function () {
+  // ------------------------------
+  // DARK MODE TOGGLE
+  // ------------------------------
+  // We support multiple dark toggle buttons (present on each page's header).
+  const darkToggleButtons = document.querySelectorAll('#darkToggle');
 
-/* ---------- THEME TOGGLE ---------- */
-(function themeInit() {
-  const btn = qs('#mode-toggle');
-  if (!btn) return;
-  try {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') {
-      document.body.classList.add('dark-mode');
-      btn.textContent = '☀️';
-    } else {
-      document.body.classList.remove('dark-mode');
-      btn.textContent = '🌙';
+  // Helper: apply or remove dark mode and update UI
+  function setDarkMode(enabled) {
+    document.body.classList.toggle('dark-mode', enabled);
+    darkToggleButtons.forEach((btn) => {
+      btn.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+      btn.textContent = enabled ? '☀️' : '🌙';
+    });
+    // Persist preference
+    try {
+      localStorage.setItem('prefers-dark', enabled ? '1' : '0');
+    } catch (e) {
+      // ignore storage errors
     }
-  } catch (e) {
-    btn.textContent = '🌙';
   }
 
-  btn.addEventListener('click', () => {
-    const isDark = document.body.classList.toggle('dark-mode');
-    try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (e) {}
-    btn.textContent = isDark ? '☀️' : '🌙';
-  });
-})();
+  // Initialize dark mode based on stored preference
+  (function initDarkMode() {
+    try {
+      const pref = localStorage.getItem('prefers-dark');
+      setDarkMode(pref === '1');
+    } catch (e) {
+      // if storage not available, default (do nothing)
+    }
+  })();
 
-/* ---------- DROPDOWN (hover desktop, click mobile) ---------- */
-(function dropdownInit() {
-  qsa('.dropdown').forEach(drop => {
-    const menu = drop.querySelector('.dropdown-menu');
-    const toggle = drop.querySelector('.dropdown-toggle') || drop.querySelector('button, a');
+  // Attach click handlers to toggle buttons
+  darkToggleButtons.forEach((btn) =>
+    btn.addEventListener('click', function () {
+      const enabled = !document.body.classList.contains('dark-mode');
+      setDarkMode(enabled);
+    })
+  );
 
-    if (!menu || !toggle) return;
-
-    // Desktop: show on hover
-    drop.addEventListener('mouseenter', () => {
-      if (window.innerWidth > 820) drop.classList.add('open');
-    });
-    drop.addEventListener('mouseleave', () => {
-      if (window.innerWidth > 820) drop.classList.remove('open');
-    });
-
-    // Mobile / touch: toggle on click
-    toggle.addEventListener('click', (ev) => {
-      if (window.innerWidth <= 820) {
+  // ------------------------------
+  // DROPDOWN / ACCESSIBILITY
+  // ------------------------------
+  // Add keyboard toggling for drop buttons (Enter / Space to toggle aria-expanded)
+  document.querySelectorAll('.drop-btn').forEach((btn) => {
+    btn.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') {
         ev.preventDefault();
-        ev.stopPropagation();
-        drop.classList.toggle('open');
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        // Toggle a CSS class on parent to simulate focus-within if needed
+        btn.parentElement.classList.toggle('focus-toggle', !expanded);
+      }
+    });
+
+    // Clicking button toggles aria-expanded for screen reader users
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.parentElement.classList.toggle('focus-toggle', !expanded);
+    });
+  });
+
+  // Close dropdowns when clicking outside (optional, CSS already hides on blur/hover)
+  document.addEventListener('click', (ev) => {
+    // if click is not inside a .nav-item, close any toggled drop-btns
+    if (!ev.target.closest('.nav-item')) {
+      document.querySelectorAll('.drop-btn').forEach((b) => {
+        b.setAttribute('aria-expanded', 'false');
+        b.parentElement.classList.remove('focus-toggle');
+      });
+    }
+  });
+
+  // ------------------------------
+  // SKILL CHIP INTERACTIONS
+  // ------------------------------
+  // Add small pop animation and allow click to trigger a pulse (visual only)
+  document.querySelectorAll('.skill-chip').forEach((chip) => {
+    chip.addEventListener('mouseenter', () => chip.classList.add('is-active'));
+    chip.addEventListener('mouseleave', () => chip.classList.remove('is-active'));
+    chip.addEventListener('focus', () => chip.classList.add('is-active'));
+    chip.addEventListener('blur', () => chip.classList.remove('is-active'));
+
+    chip.addEventListener('click', () => {
+      // Simple Web Animation API pulse (works in modern browsers)
+      try {
+        chip.animate(
+          [
+            { transform: 'scale(1)' },
+            { transform: 'scale(1.06)' },
+            { transform: 'scale(1)' },
+          ],
+          { duration: 220 }
+        );
+      } catch (e) {
+        // Fallback: quick CSS class toggle (if animate not available)
+        chip.classList.add('pulse-fallback');
+        setTimeout(() => chip.classList.remove('pulse-fallback'), 250);
       }
     });
   });
 
-  // close dropdowns when clicking outside (mobile)
-  document.addEventListener('click', (ev) => {
-    if (window.innerWidth <= 820) {
-      qsa('.dropdown.open').forEach(d => {
-        if (!d.contains(ev.target)) d.classList.remove('open');
-      });
-    }
-  });
-})();
+  // ------------------------------
+  // PROFILE IMAGE SIZE CONTROLS (index.html)
+  // ------------------------------
+  // Provide simple controls to adjust profile image width/height for preview
+  const imgWidthInput = document.getElementById('imgWidth');
+  const imgHeightInput = document.getElementById('imgHeight');
+  const applyImgSizeBtn = document.getElementById('applyImgSize');
+  const profilePic = document.getElementById('profilePic');
 
-/* ---------- REVEAL ANIMATIONS (IntersectionObserver) ---------- */
-(function revealInit() {
-  const els = qsa('.reveal');
-  if (!els.length) return;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('in-view');
-      else entry.target.classList.remove('in-view'); // reversible on scroll back
+  if (profilePic && imgWidthInput && imgHeightInput && applyImgSizeBtn) {
+    applyImgSizeBtn.addEventListener('click', () => {
+      const w = parseInt(imgWidthInput.value, 10) || 200;
+      const h = parseInt(imgHeightInput.value, 10) || 200;
+      profilePic.style.width = w + 'px';
+      profilePic.style.height = h + 'px';
+      // Save to localStorage so size persists during the session
+      try {
+        localStorage.setItem('profile-w', String(w));
+        localStorage.setItem('profile-h', String(h));
+      } catch (e) {}
     });
-  }, { threshold: 0.18 });
-  els.forEach(el => io.observe(el));
-})();
 
-/* ---------- CURSOR DOT & hover emphasis ---------- */
-(function cursorDot() {
-  if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return; // skip on touch
-  let dot = document.querySelector('.cursor-dot');
-  if (!dot) {
-    dot = document.createElement('div');
-    dot.className = 'cursor-dot';
-    document.body.appendChild(dot);
+    // Load saved sizes (if any)
+    try {
+      const sw = parseInt(localStorage.getItem('profile-w'), 10);
+      const sh = parseInt(localStorage.getItem('profile-h'), 10);
+      if (sw) {
+        profilePic.style.width = sw + 'px';
+        imgWidthInput.value = sw;
+      }
+      if (sh) {
+        profilePic.style.height = sh + 'px';
+        imgHeightInput.value = sh;
+      }
+    } catch (e) {}
   }
-  document.addEventListener('mousemove', (e) => {
-    dot.style.left = e.clientX + 'px';
-    dot.style.top = e.clientY + 'px';
+
+  // ------------------------------
+  // ON LOAD ANIMATIONS (cards)
+  // ------------------------------
+  // Animate cards sequentially on load to create a pleasant entrance
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.card').forEach((c, i) => {
+      c.style.opacity = 0;
+      c.style.transform = 'translateY(12px)';
+      setTimeout(() => {
+        c.style.transition = 'opacity 360ms ease, transform 360ms ease';
+        c.style.opacity = 1;
+        c.style.transform = 'translateY(0)';
+      }, 80 * i);
+    });
   });
 
-  const interactive = ['a', 'button', '.hover-lift', '.card', '.photo', '.btn'];
-  document.addEventListener('mouseover', (e) => {
-    const el = e.target.closest(interactive.join(','));
-    if (el) dot.classList.add('big'); else dot.classList.remove('big');
-  });
+  // ------------------------------
+  // Small helper: add keyboard focus styles to links and buttons (improve accessibility)
+  // ------------------------------
+  document.addEventListener(
+    'keyup',
+    (ev) => {
+      if (ev.key === 'Tab') {
+        document.documentElement.classList.add('user-is-tabbing');
+      }
+    },
+    { once: true }
+  );
 })();
-
-/* ---------- ensure top on load ---------- */
-window.addEventListener('load', () => {
-  try { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); } catch (e) { window.scrollTo(0,0); }
-});
