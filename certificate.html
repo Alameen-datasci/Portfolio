@@ -1,56 +1,71 @@
+<!-- certificate.html -->
+<!--
+  Detail page for a certificate.
+  - This page reuses style.css and script.js
+  - Replace the image src, title, issuer, and description below with your certificate details.
+-->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Certificates — Al Ameen</title>
-  <link rel="stylesheet" href="assets/style.css">
-  <script src="assets/script.js" defer></script>
+  <title>Certificate — CS50x</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="light">
-  <nav class="navbar">
-    <div class="logo">MyPortfolio</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="project.html">Projects</a></li>
-      <li><a class="active" href="certificate.html">Certificates</a></li>
-      <li class="dropdown" id="contact-dropdown-3">
-        <button class="dropdown-toggle" aria-expanded="false">Contact ▾</button>
-        <ul class="dropdown-menu">
-          <li><a href="mailto:alameenallu7306@gmail.com">📧 Email</a></li>
-          <li><a href="https://linkedin.com/in/Alameen-datasci" target="_blank">💼 LinkedIn</a></li>
-          <li><a href="https://github.com/Alameen-datasci" target="_blank">🐙 GitHub</a></li>
-        </ul>
-      </li>
-    </ul>
-    <button id="mode-toggle">🌙</button>
-  </nav>
+<body>
+  <!-- Header reused for consistent navigation -->
+  <header class="site-header">
+    <div class="logo"><a href="index.html">My Portfolio</a></div>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a class="nav-link" href="index.html#home">Home</a></li>
+        <li><a class="nav-link" href="index.html#about">About</a></li>
+        <li class="nav-item">
+          <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Contact ▾</button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a role="menuitem" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a role="menuitem" href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a role="menuitem" href="mailto:youremail@gmail.com">Gmail</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <button id="darkToggle" class="dark-toggle" aria-pressed="false">🌙</button>
+  </header>
 
-  <main class="section">
-    <div class="container">
-      <h1 class="section-title">Certificates</h1>
-      <p class="muted">Scroll to reveal — animations reverse when you scroll back.</p>
-
-      <div class="cert-vertical">
-        <figure class="card hover-lift reveal">
-          <img src="assets/images/certificate1.jpg" alt="Certificate 1">
-          <figcaption class="muted">CS50x — Example</figcaption>
-        </figure>
-
-        <figure class="card hover-lift reveal">
-          <img src="assets/images/certificate2.jpg" alt="Certificate 2">
-          <figcaption class="muted">CS50p — Example</figcaption>
-        </figure>
+  <main class="detail-page">
+    <section class="detail-hero">
+      <!-- Large view of the certificate -->
+      <div class="detail-img-wrap">
+        <!-- Replace the src with the full-size certificate image -->
+        <img class="detail-img" src="your-certificate-photo.jpg" alt="Full certificate image" />
       </div>
 
-      <div class="center"><a class="btn" href="index.html">Back to Home</a></div>
-    </div>
+      <div class="detail-content">
+        <h1>CS50x — Introduction to Computer Science</h1>
+        <p class="muted">Issuer: HarvardX — Issued: 2024</p>
+
+        <!-- Replace this with more details about what you learned and any highlights -->
+        <p>
+          This certificate covers the fundamentals of programming and problem solving. Completed
+          multiple programming assignments, demonstrated understanding of algorithms, data structures,
+          and debugging.
+        </p>
+
+        <div class="project-links">
+          <!-- Add links to certificate verification or screenshots if available -->
+          <a class="btn" href="index.html#certificates">← Back to certificates</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-links"><a href="index.html">Home</a><a href="project.html">Projects</a></div>
-    <p class="muted">© 2025 Al Ameen</p>
+  <footer>
+    <div class="footer-inner">
+      <p>© 2025 Your Name. All rights reserved.</p>
+    </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
