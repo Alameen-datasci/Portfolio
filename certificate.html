@@ -1,8 +1,8 @@
 <!-- certificate.html -->
 <!--
-  Detail page for a certificate.
-  - This page reuses style.css and script.js
-  - Replace the image src, title, issuer, and description below with your certificate details.
+  Certificate detail page (large view)
+  - Reuses assets/style.css and assets/script.js
+  - To change the displayed certificate, replace the image path and descriptive text below.
 -->
 <!doctype html>
 <html lang="en">
@@ -10,50 +10,53 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Certificate — CS50x</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- Link to common stylesheet -->
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <!-- Header reused for consistent navigation -->
+  <!-- Header (same structure as index for consistent navigation) -->
   <header class="site-header">
     <div class="logo"><a href="index.html">My Portfolio</a></div>
+
     <nav class="main-nav" aria-label="Main navigation">
-      <ul>
+      <ul class="nav-list">
         <li><a class="nav-link" href="index.html#home">Home</a></li>
         <li><a class="nav-link" href="index.html#about">About</a></li>
+        <li><a class="nav-link" href="certificate.html">Certificates</a></li>
+        <li><a class="nav-link" href="project.html">Projects</a></li>
+
         <li class="nav-item">
           <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Contact ▾</button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a role="menuitem" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a role="menuitem" href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a role="menuitem" href="mailto:youremail@gmail.com">Gmail</a></li>
+          <ul class="dropdown-menu" role="menu" aria-label="Contact links">
+            <li role="none"><a role="menuitem" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li role="none"><a role="menuitem" href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+            <li role="none"><a role="menuitem" href="mailto:youremail@gmail.com">Gmail</a></li>
           </ul>
         </li>
       </ul>
     </nav>
-    <button id="darkToggle" class="dark-toggle" aria-pressed="false">🌙</button>
+
+    <button id="darkToggle" class="dark-toggle" aria-pressed="false" title="Toggle dark mode">🌙</button>
   </header>
 
   <main class="detail-page">
-    <section class="detail-hero">
-      <!-- Large view of the certificate -->
-      <div class="detail-img-wrap">
-        <!-- Replace the src with the full-size certificate image -->
-        <img class="detail-img" src="your-certificate-photo.jpg" alt="Full certificate image" />
-      </div>
+    <section class="detail-hero section">
+      <div class="container">
+        <div class="detail-img-wrap">
+          <!-- Replace this src with your full-size certificate image -->
+          <img class="detail-img" src="assets/your-certificate-photo.jpg" alt="Full certificate image" />
+        </div>
 
-      <div class="detail-content">
-        <h1>CS50x — Introduction to Computer Science</h1>
-        <p class="muted">Issuer: HarvardX — Issued: 2024</p>
+        <div class="detail-content">
+          <h1>CS50x — Introduction to Computer Science</h1>
+          <p class="muted">Issued by HarvardX — 2024</p>
 
-        <!-- Replace this with more details about what you learned and any highlights -->
-        <p>
-          This certificate covers the fundamentals of programming and problem solving. Completed
-          multiple programming assignments, demonstrated understanding of algorithms, data structures,
-          and debugging.
-        </p>
+          <p>
+            This certificate demonstrates completion of foundational programming and algorithmic concepts.
+            Example highlights: problem solving, algorithms, debugging, and multiple coding assignments.
+          </p>
 
-        <div class="project-links">
-          <!-- Add links to certificate verification or screenshots if available -->
           <a class="btn" href="index.html#certificates">← Back to certificates</a>
         </div>
       </div>
@@ -66,6 +69,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="assets/script.js" defer></script>
 </body>
 </html>
