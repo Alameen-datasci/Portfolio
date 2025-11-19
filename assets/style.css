@@ -267,17 +267,17 @@ body.dark-mode main > section:nth-of-type(even){
 }
 
 .skills .skill-chip:nth-child(7) {
-  background: linear-gradient(135deg, #ffd7c4, #ffbfa0);
+  background: linear-gradient(135deg, #fdebeb, #fff6e5);
   color: #f7e9d7;
 }
 
 .skills .skill-chip:nth-child(8) {
-  background: linear-gradient(135deg, #ffd7c4, #ffbfa0);
+  background: linear-gradient(135deg, #e8f9fd, #fdf6fd);
   color: #d8f5f2;
 }
 
 .skills .skill-chip:nth-child(9) {
-  background: linear-gradient(135deg, #ffd7c4, #ffbfa0);
+  background: linear-gradient(135deg, #f7f8e8, #e9fdf6);
   color: #f2e6ff;
 }
 
