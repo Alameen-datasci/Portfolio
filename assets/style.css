@@ -179,8 +179,8 @@ body.dark-mode main > section:nth-of-type(even){
 }
 
 .profile-pic{
-  width:200px;
-  height:200px;
+  width:300px;
+  height:300px;
   border-radius:50%;
   background:#cccccc;
   background-image:url('images/IMG-20250817-WA0002.jpg');
