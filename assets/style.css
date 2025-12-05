@@ -3,7 +3,7 @@
   Central stylesheet
   - Default white theme with alternating light section colors
   - Dark mode toggles variables when body.dark-mode is present
-  - Profile image: Fixed circular size (300px)
+  - Profile image: Fixed circular size with precise X/Y positioning
   - Skill chip colors: Mid-tone pastels for visibility
   - Background: Circuit board pattern with 20% opacity (High Contrast)
 */
@@ -194,39 +194,47 @@ body.dark-mode main > section:nth-of-type(even) {
   gap: 0.75rem;
 }
 
-/* === PROFILE PICTURE FIX (Robust Version) === */
+/* === PROFILE PICTURE CONFIGURATION === */
 .profile-pic {
-  /* 1. SIZE: Fixed at 300px */
-  width: 300px;
-  height: 300px;
+  /* 1. SIZE OF THE WHOLE CIRCLE */
+  /* Change 'width' and 'height' to resize the circle. Must be equal. */
+  width: 280px; 
+  height: 280px;
 
-  /* 2. SHAPE: Circle */
+  /* 2. ROUNDING */
+  /* 50% makes it a perfect circle. 0% makes it a square. */
   border-radius: 50%;
 
-  /* 3. IMAGE HANDLERS (Covers both DIV and IMG methods) */
+  /* 3. IMAGE SOURCE & FALLBACK */
   background-image: url('images/IMG-20250817-WA0002.jpg');
+  
+  /* 4. BACKGROUND POSITION (If using <div> method) */
+  /* X% Y% -> 50% (Center) 20% (Near Top) */
+  background-position: 50% 20%;
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
   
+  /* 5. IMAGE TAG POSITION (If using <img> method) */
+  /* This ensures the image inside doesn't overflow or stretch weirdly */
   object-fit: cover;
-  object-position: center;
+  /* object-position: X Y; -> Edit this to move the image inside the frame */
+  object-position: 50% 20%; 
 
   /* Styling */
   background-color: #cccccc;
   box-shadow: var(--card-shadow);
   transition: transform 220ms ease, box-shadow 220ms ease;
   
-  /* Layout safety */
   display: block;
-  overflow: hidden; /* Ensures any child img is clipped */
+  overflow: hidden; 
 }
 
-/* Safety: If you have an <img> inside the .profile-pic div, force it to fit */
+/* Ensures <img> tag inside respects the container */
 .profile-pic img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 20%; /* MATCH THIS WITH ABOVE */
   border-radius: 50%;
 }
 
