@@ -220,7 +220,7 @@ body.dark-mode main > section:nth-of-type(even){
   border: 0;
   padding: 0.6rem 1rem;
   border-radius: 999px;
-  background: var(--surface); /* base background */
+  background: var(--surface); /* fallback */
   cursor: pointer;
   color: var(--text);
   font-weight: 600;
@@ -234,60 +234,60 @@ body.dark-mode main > section:nth-of-type(even){
 }
 
 /* ========================= COLOR OVERRIDES ========================= */
-/* These MUST stay after .skill-chip or they won’t apply */
+/* Each chip now uses "Mid-Tone" pastels to ensure they are all equally visible */
 
-/* 1. Python */
+/* 1. Python (Reddish) */
 .skills .skill-chip:nth-child(1) {
   background: linear-gradient(135deg, #ffdede, #ffb2b2);
   color: #2b2b2b;
 }
 
-/* 2. Pandas */
+/* 2. Pandas (Blueish) */
 .skills .skill-chip:nth-child(2) {
   background: linear-gradient(135deg, #dceeff, #9fc8ff);
   color: #07233a;
 }
 
-/* 3. NumPy */
+/* 3. NumPy (Greenish) */
 .skills .skill-chip:nth-child(3) {
   background: linear-gradient(135deg, #dfffe3, #9ff3c1);
   color: #073a1f;
 }
 
-/* 4. Matplotlib */
+/* 4. Matplotlib (Yellowish) */
 .skills .skill-chip:nth-child(4) {
   background: linear-gradient(135deg, #fff6d8, #ffe28a);
   color: #3b2f00;
 }
 
-/* 5. Data Analysis */
+/* 5. Data Analysis (Purplish) */
 .skills .skill-chip:nth-child(5) {
   background: linear-gradient(135deg, #e8e1ff, #c5b8ff);
   color: #2b1f4d;
 }
 
-/* 6. SQL */
+/* 6. SQL (Orangish) */
 .skills .skill-chip:nth-child(6) {
   background: linear-gradient(135deg, #ffd7c4, #ffbfa0);
   color: #3b1f0f;
 }
 
-/* 7. HTML (Darker Pink/Rose to match others) */
+/* 7. HTML (Coral/Rose - DARKER to match others) */
 .skills .skill-chip:nth-child(7) {
-  background: linear-gradient(135deg, #ffc8dd, #ffafcc);
+  background: linear-gradient(135deg, #ffc5c5, #ff9494);
   color: #4a0d1d;
 }
 
-/* 8. C Programming (Darker Cyan/Turquoise to match others) */
+/* 8. C Programming (Strong Cyan/Turquoise - DARKER to match others) */
 .skills .skill-chip:nth-child(8) {
-  background: linear-gradient(135deg, #a2d2ff, #8ecae6);
-  color: #0d2b3a;
+  background: linear-gradient(135deg, #a2d2ff, #80deea);
+  color: #00363a;
 }
 
-/* 9. Machine Learning (Darker Sage/Mint to match others) */
+/* 9. Machine Learning (Mint/Sage - DARKER to match others) */
 .skills .skill-chip:nth-child(9) {
-  background: linear-gradient(135deg, #d8f3dc, #95d5b2);
-  color: #1b4332;
+  background: linear-gradient(135deg, #caffbf, #9bf6ff);
+  color: #0f3d39;
 }
 
 /* ================= CARDS GRID ================= */
