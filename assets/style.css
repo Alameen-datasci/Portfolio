@@ -3,9 +3,8 @@
   Central stylesheet
   - Default white theme with alternating light section colors
   - Dark mode toggles variables when body.dark-mode is present
-  - Profile image is fixed size
-  - Skill chip colors assigned via nth-child within .skills
-  - Cards grid: 3 columns (responsive)
+  - Profile image: Fixed circular size (350px)
+  - Skill chip colors: Mid-tone pastels for visibility
   - Background: Circuit board pattern with 20% opacity (High Contrast)
 */
 
@@ -196,13 +195,22 @@ body.dark-mode main > section:nth-of-type(even) {
 }
 
 .profile-pic {
-  width: 500px;
-  height: 500px;
+  /* 1. SIZE: Reduced to 350px for a better fit */
+  width: 350px;
+  height: 350px;
+
+  /* 2. SHAPE: Creates the circle */
   border-radius: 50%;
-  background: #cccccc;
+
+  /* 3. IMAGE PATH */
   background-image: url('images/IMG-20250817-WA0002.jpg');
+
+  /* 4. KEY FIX: This zooms the image to cover the circle without edges */
   background-size: cover;
   background-position: center;
+
+  /* Styling */
+  background-color: #cccccc;
   box-shadow: var(--card-shadow);
   transition: transform 220ms ease, box-shadow 220ms ease;
 }
