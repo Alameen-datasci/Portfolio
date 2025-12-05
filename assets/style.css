@@ -3,7 +3,7 @@
   Central stylesheet
   - Default white theme with alternating light section colors
   - Dark mode toggles variables when body.dark-mode is present
-  - Profile image: Fixed circular size (350px)
+  - Profile image: Fixed circular size (300px)
   - Skill chip colors: Mid-tone pastels for visibility
   - Background: Circuit board pattern with 20% opacity (High Contrast)
 */
@@ -195,19 +195,23 @@ body.dark-mode main > section:nth-of-type(even) {
 }
 
 .profile-pic {
-  /* 1. SIZE: Reduced to 350px for a better fit */
-  width: 350px;
-  height: 350px;
+  /* 1. SIZE: Reduced to 300px (standard size) */
+  width: 300px;
+  height: 300px;
 
-  /* 2. SHAPE: Creates the circle */
+  /* 2. SHAPE */
   border-radius: 50%;
 
-  /* 3. IMAGE PATH */
+  /* 3. IMAGE HANDLERS */
+  /* If you use a DIV */
   background-image: url('images/IMG-20250817-WA0002.jpg');
-
-  /* 4. KEY FIX: This zooms the image to cover the circle without edges */
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  
+  /* If you use an IMG tag (Fixes the white edge issue) */
+  object-fit: cover;
+  object-position: center;
 
   /* Styling */
   background-color: #cccccc;
