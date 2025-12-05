@@ -272,22 +272,22 @@ body.dark-mode main > section:nth-of-type(even){
   color: #3b1f0f;
 }
 
-/* 7. HTML (Fixed Contrast) */
+/* 7. HTML - Changed to Dark Red/Black Text */
 .skills .skill-chip:nth-child(7) {
   background: linear-gradient(135deg, #fdebeb, #fff6e5);
-  color: #5c3a3a; /* Darker reddish-brown */
+  color: #361d1d; 
 }
 
-/* 8. C Programming (Fixed Contrast) */
+/* 8. C Programming - Changed to Dark Teal/Black Text */
 .skills .skill-chip:nth-child(8) {
   background: linear-gradient(135deg, #e8f9fd, #fdf6fd);
-  color: #2c4a52; /* Darker teal/blue */
+  color: #122f33; 
 }
 
-/* 9. Machine Learning (Fixed Contrast) */
+/* 9. Machine Learning - Changed to Dark Olive/Black Text */
 .skills .skill-chip:nth-child(9) {
   background: linear-gradient(135deg, #f7f8e8, #e9fdf6);
-  color: #2e4a36; /* Darker olive green */
+  color: #1f3324; 
 }
 
 /* ================= CARDS GRID ================= */
