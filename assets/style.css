@@ -272,21 +272,21 @@ body.dark-mode main > section:nth-of-type(even){
   color: #3b1f0f;
 }
 
-/* 7. HTML - Changed to Dark Red/Black Text */
+/* 7. HTML - Made Background Stronger (Pink/Rose) */
 .skills .skill-chip:nth-child(7) {
-  background: linear-gradient(135deg, #fdebeb, #fff6e5);
+  background: linear-gradient(135deg, #ffc8dd, #ffafcc);
   color: #361d1d; 
 }
 
-/* 8. C Programming - Changed to Dark Teal/Black Text */
+/* 8. C Programming - Made Background Stronger (Turquoise) */
 .skills .skill-chip:nth-child(8) {
-  background: linear-gradient(135deg, #e8f9fd, #fdf6fd);
+  background: linear-gradient(135deg, #bef2f5, #8ee3e8);
   color: #122f33; 
 }
 
-/* 9. Machine Learning - Changed to Dark Olive/Black Text */
+/* 9. Machine Learning - Made Background Stronger (Lime/Green) */
 .skills .skill-chip:nth-child(9) {
-  background: linear-gradient(135deg, #f7f8e8, #e9fdf6);
+  background: linear-gradient(135deg, #d9ed92, #b5e48c);
   color: #1f3324; 
 }
 
