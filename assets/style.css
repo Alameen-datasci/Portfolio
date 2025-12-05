@@ -272,22 +272,22 @@ body.dark-mode main > section:nth-of-type(even){
   color: #3b1f0f;
 }
 
-/* 7. HTML - Made Background Stronger (Pink/Rose) */
+/* 7. HTML (Darker Pink/Rose to match others) */
 .skills .skill-chip:nth-child(7) {
   background: linear-gradient(135deg, #ffc8dd, #ffafcc);
-  color: #361d1d; 
+  color: #4a0d1d;
 }
 
-/* 8. C Programming - Made Background Stronger (Turquoise) */
+/* 8. C Programming (Darker Cyan/Turquoise to match others) */
 .skills .skill-chip:nth-child(8) {
-  background: linear-gradient(135deg, #bef2f5, #8ee3e8);
-  color: #122f33; 
+  background: linear-gradient(135deg, #a2d2ff, #8ecae6);
+  color: #0d2b3a;
 }
 
-/* 9. Machine Learning - Made Background Stronger (Lime/Green) */
+/* 9. Machine Learning (Darker Sage/Mint to match others) */
 .skills .skill-chip:nth-child(9) {
-  background: linear-gradient(135deg, #d9ed92, #b5e48c);
-  color: #1f3324; 
+  background: linear-gradient(135deg, #d8f3dc, #95d5b2);
+  color: #1b4332;
 }
 
 /* ================= CARDS GRID ================= */
