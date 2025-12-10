@@ -210,7 +210,7 @@ body.dark-mode main > section:nth-of-type(even) {
   
   /* 4. BACKGROUND POSITION (If using <div> method) */
   /* X% Y% -> 50% (Center) 20% (Near Top) */
-  background-position: 50% 40%;
+  background-position: 50% 20%;
   background-size: cover;
   background-repeat: no-repeat;
   
@@ -218,7 +218,7 @@ body.dark-mode main > section:nth-of-type(even) {
   /* This ensures the image inside doesn't overflow or stretch weirdly */
   object-fit: cover;
   /* object-position: X Y; -> Edit this to move the image inside the frame */
-  object-position: 50% 20%; 
+  object-position: 50% 40%; 
 
   /* Styling */
   background-color: #cccccc;
