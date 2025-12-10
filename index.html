@@ -1,10 +1,3 @@
-<!-- index.html -->
-<!--
-  Main portfolio landing page
-  - Uses assets/style.css and assets/script.js
-  - Replace thumbnail/image paths where noted below.
-  - No public image-size controls (fixed profile size in CSS).
--->
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,12 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>My Portfolio</title>
 
-  <!-- Path to CSS in assets folder -->
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <!-- ========================= HEADER ========================= -->
-  <!-- Header: Logo, nav links (Home, About, Certificates, Projects, Contact dropdown), dark toggle -->
   <header class="site-header">
     <div class="logo"><a href="index.html">My Portfolio</a></div>
 
@@ -26,16 +16,11 @@
         <li><a class="nav-link" href="#home">Home</a></li>
         <li><a class="nav-link" href="#about">About</a></li>
 
-        <!-- Direct links to section pages -->
         <li><a class="nav-link" href="certificate.html">Certificates</a></li>
         <li><a class="nav-link" href="project.html">Projects</a></li>
 
-        <!-- Contact dropdown (vertical, hidden by default; shows on hover/focus) -->
         <li class="nav-item">
-          <!-- button that toggles aria-expanded for accessibility (JS toggles this) -->
           <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Contact ▾</button>
-
-          <!-- Dropdown (vertical list) -->
           <ul class="dropdown-menu" role="menu" aria-label="Contact links">
             <li role="none"><a role="menuitem" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
             <li role="none"><a role="menuitem" href="https://github.com/Alameen-datasci" target="_blank" rel="noopener">GitHub</a></li>
@@ -45,19 +30,12 @@
       </ul>
     </nav>
 
-    <!-- Dark mode toggle button -->
     <button id="darkToggle" class="dark-toggle" aria-pressed="false" title="Toggle dark mode">🌙</button>
   </header>
 
-  <!-- ========================= HERO / INTRO ========================= -->
   <main>
-    <!-- Hero: left = circular profile image (fixed size), right = intro -->
     <section id="home" class="section hero">
       <div class="hero-left">
-        <!-- Profile picture placeholder:
-             To change: open assets/style.css and edit the background-image URL inside .profile-pic
-             (this is intentionally controlled under-the-hood; users cannot resize)
-        -->
         <div class="profile-pic" aria-hidden="false"></div>
       </div>
 
@@ -68,7 +46,6 @@
       </div>
     </section>
 
-    <!-- ========================= ABOUT ========================= -->
     <section id="about" class="section">
       <div class="container">
         <h2>About Me</h2>
@@ -79,14 +56,9 @@
       </div>
     </section>
 
-    <!-- ========================= SKILLS (interactive, colored chips) ========================= -->
     <section id="skills" class="section">
       <div class="container">
         <h2>Skills</h2>
-
-        <!-- Colored, interactive skill chips.
-             To add/remove or rename skills, edit the buttons below. Colors assigned in CSS via .skills .skill-chip:nth-child()
-        -->
         <div class="skills" role="list">
           <button class="skill-chip" role="listitem">Python</button>
           <button class="skill-chip" role="listitem">Pandas</button>
@@ -101,45 +73,40 @@
       </div>
     </section>
 
-    <!-- ========================= CERTIFICATES (3 columns grid) ========================= -->
     <section id="certificates" class="section">
       <div class="container">
         <h2>Certificates</h2>
 
-        <!--
-          Grid with 3 columns. Add more .card elements and the grid auto-creates rows.
-          Clicking a card opens certificate.html (detail page).
-        -->
         <div class="cards-grid">
-          <a class="card" href="certificate.html" aria-label="Open CS50x certificate">
-            <img class="card-img" src="assets/images/CS50x.png" alt="Certificate thumbnail" />
+          
+          <a class="card" href="certificate.html?id=cs50x" aria-label="Open CS50x certificate">
+            <img class="card-img" src="assets/images/CS50x.png" alt="CS50x Certificate" />
             <div class="card-body">
               <h3 class="card-title">Introduction to Computer Science</h3>
               <p class="card-sub">HarvardX</p>
             </div>
           </a>
 
-          <!-- Copy the .card block to add more certificate cards -->
-          <a class="card" href="certificate.html">
-            <img class="card-img" src="assets/images/CS50P.png" alt="Certificate thumbnail" />
+          <a class="card" href="certificate.html?id=cs50p" aria-label="Open CS50P certificate">
+            <img class="card-img" src="assets/images/CS50P.png" alt="CS50P Certificate" />
             <div class="card-body">
               <h3 class="card-title">Introduction to Programming with Python</h3>
               <p class="card-sub">HarvardX</p>
             </div>
           </a>
 
-          <a class="card" href="certificate.html">
-            <img class="card-img" src="assets/images/ADSP course 1.png" alt="Certificate thumbnail" />
+          <a class="card" href="certificate.html?id=adsp1" aria-label="Open Data Science certificate">
+            <img class="card-img" src="assets/images/ADSP course 1.png" alt="Data Science Certificate" />
             <div class="card-body">
-              <h3 class="card-title">Intoduction to Data Science in Python</h3>
+              <h3 class="card-title">Introduction to Data Science in Python</h3>
               <p class="card-sub">University of Michigan</p>
             </div>
           </a>
 
-          <a class="card" href="certificate.html">
-            <img class="card-img" src="assets/images/ADSP2.png" alt="Certificate thumbnail" />
+          <a class="card" href="certificate.html?id=adsp2" aria-label="Open Plotting certificate">
+            <img class="card-img" src="assets/images/ADSP2.png" alt="Plotting Certificate" />
             <div class="card-body">
-              <h3 class="card-title">Applied Plotting, Charting & Data Representation in Python</h3>
+              <h3 class="card-title">Applied Plotting, Charting & Data Representation</h3>
               <p class="card-sub">University of Michigan</p>
             </div>
           </a>
@@ -148,7 +115,6 @@
       </div>
     </section>
 
-    <!-- ========================= PROJECTS (3 columns grid) ========================= -->
     <section id="projects" class="section">
       <div class="container">
         <h2>Projects</h2>
@@ -183,7 +149,6 @@
     </section>
   </main>
 
-  <!-- ========================= FOOTER ========================= -->
   <footer>
     <div class="footer-inner">
       <p>© 2025 Your Name. All rights reserved.</p>
@@ -195,7 +160,6 @@
     </div>
   </footer>
 
-  <!-- Path to JS in assets folder; use defer to ensure DOM is parsed first -->
   <script src="assets/script.js" defer></script>
 </body>
 </html>
