@@ -1,21 +1,13 @@
-<!-- certificate.html -->
-<!--
-  Certificate detail page (large view)
-  - Reuses assets/style.css and assets/script.js
-  - To change the displayed certificate, replace the image path and descriptive text below.
--->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Certificate — CS50x</title>
+  <title>Certificate Details</title>
 
-  <!-- Link to common stylesheet -->
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <!-- Header (same structure as index for consistent navigation) -->
   <header class="site-header">
     <div class="logo"><a href="index.html">My Portfolio</a></div>
 
@@ -30,8 +22,8 @@
           <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Contact ▾</button>
           <ul class="dropdown-menu" role="menu" aria-label="Contact links">
             <li role="none"><a role="menuitem" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li role="none"><a role="menuitem" href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
-            <li role="none"><a role="menuitem" href="mailto:youremail@gmail.com">Gmail</a></li>
+            <li role="none"><a role="menuitem" href="https://github.com/Alameen-datasci" target="_blank" rel="noopener">GitHub</a></li>
+            <li role="none"><a role="menuitem" href="mailto:alameendatasci@gmail.com">Gmail</a></li>
           </ul>
         </li>
       </ul>
@@ -44,15 +36,14 @@
     <section class="detail-hero section">
       <div class="container">
         <div class="detail-img-wrap">
-          <!-- Replace this src with your full-size certificate image -->
-          <img class="detail-img" src="assets/images/CS50x.png" alt="Full certificate image" />
+          <img id="cert-img" class="detail-img" src="assets/images/CS50x.png" alt="Certificate image" />
         </div>
 
         <div class="detail-content">
-          <h1>CS50x — Introduction to Computer Science</h1>
-          <p class="muted">Issued by HarvardX — 2025</p>
+          <h1 id="cert-title">CS50x — Introduction to Computer Science</h1>
+          <p id="cert-issuer" class="muted">Issued by HarvardX — 2025</p>
 
-          <p>
+          <p id="cert-desc">
             This certificate demonstrates completion of foundational programming and algorithmic concepts.
             Example highlights: problem solving, algorithms, debugging, and multiple coding assignments.
           </p>
@@ -70,5 +61,50 @@
   </footer>
 
   <script src="assets/script.js" defer></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Data definitions for your certificates
+      const certificates = {
+        'cs50x': {
+          title: 'Introduction to Computer Science (CS50x)',
+          issuer: 'Issued by HarvardX — 2025',
+          img: 'assets/images/CS50x.png',
+          desc: 'This certificate demonstrates completion of foundational programming concepts including C, Python, SQL, Algorithms, and Data Structures. It emphasizes algorithmic thinking and solving problems efficiently.'
+        },
+        'cs50p': {
+          title: 'Introduction to Programming with Python (CS50P)',
+          issuer: 'Issued by HarvardX — 2025',
+          img: 'assets/images/CS50P.png',
+          desc: 'Focused entirely on Python programming. Covers functions, variables, conditionals, loops, exceptions, libraries, unit tests, file I/O, regular expressions, and Object-Oriented Programming (OOP).'
+        },
+        'adsp1': {
+          title: 'Introduction to Data Science in Python',
+          issuer: 'Issued by University of Michigan — Coursera',
+          img: 'assets/images/ADSP course 1.png',
+          desc: 'Covers the basics of the Python pandas library, including Series and DataFrame data structures, and essential data manipulation tasks for data cleaning and analysis.'
+        },
+        'adsp2': {
+          title: 'Applied Plotting, Charting & Data Representation',
+          issuer: 'Issued by University of Michigan — Coursera',
+          img: 'assets/images/ADSP2.png',
+          desc: 'Focuses on information visualization basics using the matplotlib library. Covers design principles, charting techniques, and presenting data insights effectively.'
+        }
+      };
+
+      // Get ID from URL
+      const params = new URLSearchParams(window.location.search);
+      const certId = params.get('id');
+
+      // Load data (fallback to CS50x if ID is missing or invalid)
+      const data = certificates[certId] || certificates['cs50x'];
+
+      // Update DOM
+      document.getElementById('cert-img').src = data.img;
+      document.getElementById('cert-title').textContent = data.title;
+      document.getElementById('cert-issuer').textContent = data.issuer;
+      document.getElementById('cert-desc').textContent = data.desc;
+    });
+  </script>
 </body>
 </html>
