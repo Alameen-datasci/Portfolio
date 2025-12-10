@@ -15,7 +15,9 @@
       <ul class="nav-list">
         <li><a class="nav-link" href="index.html#home">Home</a></li>
         <li><a class="nav-link" href="index.html#about">About</a></li>
-        <li><a class="nav-link" href="certificate.html">Certificates</a></li>
+        
+        <li><a class="nav-link" href="index.html#certificates">Certificates</a></li>
+        
         <li><a class="nav-link" href="project.html">Projects</a></li>
 
         <li class="nav-item">
@@ -43,15 +45,8 @@
           <h1 id="cert-title">CS50x — Introduction to Computer Science</h1>
           <p id="cert-issuer" class="muted">Issued by HarvardX — 2025</p>
 
-          <p id="cert-desc">
-            Description "More than just a coding course, CS50x was a rigorous deep dive into the art of computational thinking. Starting with the raw power of C, I learned how computers "think" at the hardware level—managing memory and pointers—before scaling up to higher-level abstractions in Python and SQL. This course taught me not to just write code, but to solve complex problems with algorithmic efficiency and elegance."
-
-Key Takeaways:
-Foundations: Mastered low-level concepts like memory management, pointers, and data structures (Linked Lists, Trees, Hash Tables) in C.
-Algorithms: Gained proficiency in searching and sorting algorithms, focusing on time complexity (Big O notation).
-Web Engineering: Built dynamic web applications using Python (Flask), SQL, and HTML/CSS/JavaScript.
-Problem Solving: Developed the resilience to tackle novel engineering challenges without a roadmap.
-          </p>
+          <div id="cert-desc" class="cert-description-block">
+            </div>
 
           <a class="btn" href="index.html#certificates">← Back to certificates</a>
         </div>
@@ -69,53 +64,95 @@ Problem Solving: Developed the resilience to tackle novel engineering challenges
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Data definitions for your certificates
+      
+      // 1. DATA: Detailed descriptions with HTML formatting
       const certificates = {
         'cs50x': {
-          title: 'Introduction to Computer Science (CS50x)',
-          issuer: 'Issued by HarvardX — 2025',
+          title: 'CS50x: Introduction to Computer Science',
+          issuer: 'Issued by Harvard University',
           img: 'assets/images/CS50x.png',
-          desc: 'More than just a coding course, CS50x was a rigorous deep dive into the art of computational thinking.
-            Starting with the raw power of C, I learned how computers "think" at the hardware level—managing memory and pointers—before scaling up to higher-level abstractions in Python and SQL.
-            This course taught me not to just write code, but to solve complex problems with algorithmic efficiency and elegance.
-            Key Takeaways:
-            Foundations: Mastered low-level concepts like memory management, pointers, and data structures (Linked Lists, Trees, Hash Tables) in C.
-            Algorithms: Gained proficiency in searching and sorting algorithms, focusing on time complexity (Big O notation).
-            Web Engineering: Built dynamic web applications using Python (Flask), SQL, and HTML/CSS/JavaScript.
-            Problem Solving: Developed the resilience to tackle novel engineering challenges without a roadmap.'
+          desc: `
+            <h3>Narrative Description</h3>
+            <p>More than just a coding course, CS50x was a rigorous deep dive into the art of computational thinking. Starting with the raw power of C, I learned how computers "think" at the hardware level—managing memory and pointers—before scaling up to higher-level abstractions in Python and SQL. This course taught me not to just write code, but to solve complex problems with algorithmic efficiency and elegance.</p>
+            
+            <h3>Key Takeaways:</h3>
+            <ul>
+              <li><strong>Foundations:</strong> Mastered low-level concepts like memory management, pointers, and data structures (Linked Lists, Trees, Hash Tables) in C.</li>
+              <li><strong>Algorithms:</strong> Gained proficiency in searching and sorting algorithms, focusing on time complexity (Big O notation).</li>
+              <li><strong>Web Engineering:</strong> Built dynamic web applications using Python (Flask), SQL, and HTML/CSS/JavaScript.</li>
+              <li><strong>Problem Solving:</strong> Developed the resilience to tackle novel engineering challenges without a roadmap.</li>
+            </ul>
+          `
         },
         'cs50p': {
-          title: 'Introduction to Programming with Python (CS50P)',
-          issuer: 'Issued by HarvardX — 2025',
+          title: 'CS50p: Introduction to Programming with Python',
+          issuer: 'Issued by Harvard University',
           img: 'assets/images/CS50P.png',
-          desc: 'Focused entirely on Python programming. Covers functions, variables, conditionals, loops, exceptions, libraries, unit tests, file I/O, regular expressions, and Object-Oriented Programming (OOP).'
+          desc: `
+            <h3>Narrative Description</h3>
+            <p>While CS50x taught me how to solve problems, CS50p taught me how to solve them <em>The Pythonic Way</em>. This specialized course focused on writing code that is not only functional but also readable, robust, and efficient. It refined my ability to use powerful libraries, write unit tests, and leverage Object-Oriented Programming principles to build scalable software.</p>
+            
+            <h3>Key Takeaways:</h3>
+            <ul>
+              <li><strong>Advanced Python:</strong> Moved beyond syntax to master Regular Expressions (Regex), File I/O, and Functional Programming.</li>
+              <li><strong>Code Quality:</strong> Learned to write robust code using Unit Testing (pytest), exception handling, and style guides (PEP 8).</li>
+              <li><strong>Object-Oriented Design:</strong> Implemented custom Classes and Objects to model real-world problems.</li>
+              <li><strong>APIs & Libraries:</strong> Gained experience interacting with third-party APIs and libraries to extend functionality.</li>
+            </ul>
+          `
         },
         'adsp1': {
           title: 'Introduction to Data Science in Python',
-          issuer: 'Issued by University of Michigan — Coursera',
+          issuer: 'Issued by University of Michigan',
           img: 'assets/images/ADSP course 1.png',
-          desc: 'Covers the basics of the Python pandas library, including Series and DataFrame data structures, and essential data manipulation tasks for data cleaning and analysis.'
+          desc: `
+            <h3>Narrative Description</h3>
+            <p>This course served as my entry point into the data science ecosystem. I transitioned from general programming to data manipulation, learning to wrangle messy, real-world datasets into clean, actionable insights. It provided a strong command over the Pandas library, allowing me to perform complex statistical analyses and prepare data for machine learning models.</p>
+            
+            <h3>Key Takeaways:</h3>
+            <ul>
+              <li><strong>Data Wrangling:</strong> Mastered Pandas and NumPy for efficient data cleaning, merging, and reshaping.</li>
+              <li><strong>Performance:</strong> Learned vectorization techniques to process large datasets faster than standard loops.</li>
+              <li><strong>Analysis:</strong> Conducted hypothesis testing and statistical analysis on real-world datasets.</li>
+              <li><strong>Data Structures:</strong> Deep understanding of Series and DataFrame objects for handling tabular data.</li>
+            </ul>
+          `
         },
         'adsp2': {
-          title: 'Applied Plotting, Charting & Data Representation',
-          issuer: 'Issued by University of Michigan — Coursera',
+          title: 'Applied Plotting, Charting & Data Representation in Python',
+          issuer: 'Issued by University of Michigan',
           img: 'assets/images/ADSP2.png',
-          desc: 'Focuses on information visualization basics using the matplotlib library. Covers design principles, charting techniques, and presenting data insights effectively.'
+          desc: `
+            <h3>Narrative Description</h3>
+            <p>Data is only as powerful as your ability to communicate it. In this course, I learned to bridge the gap between analytics and visual storytelling. Beyond just generating charts, I studied the principles of information design—learning how to avoid misleading visualizations and how to create graphics that are both aesthetically pleasing and statistically accurate.</p>
+            
+            <h3>Key Takeaways:</h3>
+            <ul>
+              <li><strong>Visualization Tools:</strong> Advanced proficiency in Matplotlib and Seaborn for creating static and interactive plots.</li>
+              <li><strong>Design Principles:</strong> Applied the data-ink ratio and other design rules to create clutter-free, high-impact visuals.</li>
+              <li><strong>Statistical Communication:</strong> Learned to visualize uncertainty (error bars, confidence intervals) rather than just simple averages.</li>
+              <li><strong>Exploratory Analysis:</strong> Used visual techniques to uncover hidden patterns and trends in complex data.</li>
+            </ul>
+          `
         }
       };
 
-      // Get ID from URL
+      // 2. LOGIC: Read the URL parameter ?id=...
       const params = new URLSearchParams(window.location.search);
       const certId = params.get('id');
 
-      // Load data (fallback to CS50x if ID is missing or invalid)
+      // 3. FALLBACK: If no ID is found, default to CS50x
       const data = certificates[certId] || certificates['cs50x'];
 
-      // Update DOM
-      document.getElementById('cert-img').src = data.img;
-      document.getElementById('cert-title').textContent = data.title;
-      document.getElementById('cert-issuer').textContent = data.issuer;
-      document.getElementById('cert-desc').textContent = data.desc;
+      // 4. UPDATE: Change the HTML elements
+      if(document.getElementById('cert-img')) {
+          document.getElementById('cert-img').src = data.img;
+          document.getElementById('cert-title').textContent = data.title;
+          document.getElementById('cert-issuer').textContent = data.issuer;
+          
+          // IMPORTANT: Use innerHTML here to render the HTML tags inside desc
+          document.getElementById('cert-desc').innerHTML = data.desc;
+      }
     });
   </script>
 </body>
