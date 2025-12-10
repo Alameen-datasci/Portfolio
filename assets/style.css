@@ -218,7 +218,7 @@ body.dark-mode main > section:nth-of-type(even) {
   /* This ensures the image inside doesn't overflow or stretch weirdly */
   object-fit: cover;
   /* object-position: X Y; -> Edit this to move the image inside the frame */
-  object-position: 40% 40%; 
+  object-position: 80% 40%; 
 
   /* Styling */
   background-color: #cccccc;
