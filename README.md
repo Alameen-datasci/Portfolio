@@ -32,9 +32,11 @@ I have completed several rigorous programs to sharpen my computational and analy
 
 * **HarvardX:** CS50x (Introduction to Computer Science)
 * **HarvardX:** CS50P (Introduction to Programming with Python)
-* **University of Michigan:** Applied Data Science with Python
-* **UC Davis:** SQL for Data Science
+* **University of Michigan:** Introduction to Data Science with Python
+* **University of Michigan:** Applied Plotting, Charting & Data Representation
+in Python
 * **University of Michigan:** Applied Machine Learning with Python
+* **UC Davis:** SQL for Data Science
 
 ## 📂 Project Highlights
 * **Prediction Model:** An ML pipeline focused on evaluation and avoiding overfitting.
