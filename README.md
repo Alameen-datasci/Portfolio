@@ -39,9 +39,7 @@ in Python
 * **UC Davis:** SQL for Data Science
 
 ## 📂 Project Highlights
-* **Prediction Model:** An ML pipeline focused on evaluation and avoiding overfitting.
-* **Data Visualization Project:** Interactive dashboards and storytelling through data-ink ratio optimization.
-* **EDA Notebook:** Deep-dive exploratory analysis into complex agricultural production datasets.
+* **In Progress
 
 ## 🌐 Connect With Me
 * **LinkedIn:** [linkedin.com/in/Alameen-datasci](https://linkedin.com)
