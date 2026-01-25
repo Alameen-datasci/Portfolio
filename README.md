@@ -39,7 +39,7 @@ in Python
 * **UC Davis:** SQL for Data Science
 
 ## 📂 Project Highlights
-* **In Progress
+* **In Progress**
 
 ## 🌐 Connect With Me
 * **LinkedIn:** [linkedin.com/in/Alameen-datasci](https://linkedin.com)
