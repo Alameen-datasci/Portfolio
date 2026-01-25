@@ -42,8 +42,8 @@
         </div>
 
         <div class="detail-content">
-          <h1 id="cert-title">CS50x — Introduction to Computer Science</h1>
-          <p id="cert-issuer" class="muted">Issued by HarvardX — 2025</p>
+          <h1 id="cert-title">Certificate Title</h1>
+          <p id="cert-issuer" class="muted">Issuer — Year</p>
 
           <div id="cert-desc" class="cert-description-block">
             </div>
@@ -65,7 +65,6 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       
-      // 1. DATA: Detailed descriptions with HTML formatting
       const certificates = {
         'cs50x': {
           title: 'CS50x: Introduction to Computer Science',
@@ -77,10 +76,9 @@
             
             <h3>Key Takeaways:</h3>
             <ul>
-              <li><strong>Foundations:</strong> Mastered low-level concepts like memory management, pointers, and data structures (Linked Lists, Trees, Hash Tables) in C.</li>
-              <li><strong>Algorithms:</strong> Gained proficiency in searching and sorting algorithms, focusing on time complexity (Big O notation).</li>
-              <li><strong>Web Engineering:</strong> Built dynamic web applications using Python (Flask), SQL, and HTML/CSS/JavaScript.</li>
-              <li><strong>Problem Solving:</strong> Developed the resilience to tackle novel engineering challenges without a roadmap.</li>
+              <li><strong>Foundations:</strong> Mastered low-level concepts like memory management, pointers, and data structures in C.</li>
+              <li><strong>Algorithms:</strong> Gained proficiency in searching and sorting algorithms, focusing on Big O notation.</li>
+              <li><strong>Web Engineering:</strong> Built dynamic web applications using Python (Flask), SQL, and HTML/CSS/JS.</li>
             </ul>
           `
         },
@@ -90,14 +88,13 @@
           img: 'assets/images/CS50P.png',
           desc: `
             <h3>Narrative Description</h3>
-            <p>While CS50x taught me how to solve problems, CS50p taught me how to solve them <em>The Pythonic Way</em>. This specialized course focused on writing code that is not only functional but also readable, robust, and efficient. It refined my ability to use powerful libraries, write unit tests, and leverage Object-Oriented Programming principles to build scalable software.</p>
+            <p>While CS50x taught me how to solve problems, CS50p taught me how to solve them <em>The Pythonic Way</em>. This specialized course focused on writing code that is not only functional but also readable, robust, and efficient.</p>
             
             <h3>Key Takeaways:</h3>
             <ul>
-              <li><strong>Advanced Python:</strong> Moved beyond syntax to master Regular Expressions (Regex), File I/O, and Functional Programming.</li>
-              <li><strong>Code Quality:</strong> Learned to write robust code using Unit Testing (pytest), exception handling, and style guides (PEP 8).</li>
+              <li><strong>Advanced Python:</strong> Mastered Regular Expressions (Regex), File I/O, and Functional Programming.</li>
+              <li><strong>Code Quality:</strong> Mastered Unit Testing (pytest) and PEP 8 style guides.</li>
               <li><strong>Object-Oriented Design:</strong> Implemented custom Classes and Objects to model real-world problems.</li>
-              <li><strong>APIs & Libraries:</strong> Gained experience interacting with third-party APIs and libraries to extend functionality.</li>
             </ul>
           `
         },
@@ -107,14 +104,13 @@
           img: 'assets/images/ADSP course 1.png',
           desc: `
             <h3>Narrative Description</h3>
-            <p>This course served as my entry point into the data science ecosystem. I transitioned from general programming to data manipulation, learning to wrangle messy, real-world datasets into clean, actionable insights. It provided a strong command over the Pandas library, allowing me to perform complex statistical analyses and prepare data for machine learning models.</p>
+            <p>This course served as my entry point into the data science ecosystem. I transitioned from general programming to data manipulation, learning to wrangle messy, real-world datasets into clean, actionable insights using Pandas.</p>
             
             <h3>Key Takeaways:</h3>
             <ul>
-              <li><strong>Data Wrangling:</strong> Mastered Pandas and NumPy for efficient data cleaning, merging, and reshaping.</li>
-              <li><strong>Performance:</strong> Learned vectorization techniques to process large datasets faster than standard loops.</li>
+              <li><strong>Data Wrangling:</strong> Mastered Pandas and NumPy for efficient data cleaning and merging.</li>
               <li><strong>Analysis:</strong> Conducted hypothesis testing and statistical analysis on real-world datasets.</li>
-              <li><strong>Data Structures:</strong> Deep understanding of Series and DataFrame objects for handling tabular data.</li>
+              <li><strong>Vectorization:</strong> Learned techniques to process large datasets faster than standard loops.</li>
             </ul>
           `
         },
@@ -124,14 +120,13 @@
           img: 'assets/images/ADSP2.png',
           desc: `
             <h3>Narrative Description</h3>
-            <p>Data is only as powerful as your ability to communicate it. In this course, I learned to bridge the gap between analytics and visual storytelling. Beyond just generating charts, I studied the principles of information design—learning how to avoid misleading visualizations and how to create graphics that are both aesthetically pleasing and statistically accurate.</p>
+            <p>Bridged the gap between analytics and visual storytelling. I studied the principles of information design—learning how to avoid misleading visualizations and how to create graphics that are statistically accurate.</p>
             
             <h3>Key Takeaways:</h3>
             <ul>
-              <li><strong>Visualization Tools:</strong> Advanced proficiency in Matplotlib and Seaborn for creating static and interactive plots.</li>
-              <li><strong>Design Principles:</strong> Applied the data-ink ratio and other design rules to create clutter-free, high-impact visuals.</li>
-              <li><strong>Statistical Communication:</strong> Learned to visualize uncertainty (error bars, confidence intervals) rather than just simple averages.</li>
-              <li><strong>Exploratory Analysis:</strong> Used visual techniques to uncover hidden patterns and trends in complex data.</li>
+              <li><strong>Visualization Tools:</strong> Advanced proficiency in Matplotlib and Seaborn.</li>
+              <li><strong>Design Principles:</strong> Applied the data-ink ratio to create high-impact visuals.</li>
+              <li><strong>Communication:</strong> Learned to visualize uncertainty (error bars, confidence intervals).</li>
             </ul>
           `
         },
@@ -141,33 +136,43 @@
           img: 'assets/images/MLUM.png',
           desc: `
             <h3>Narrative Description</h3>
-            <p>This course focused on the transition from data analysis to predictive modeling. I learned how to build, evaluate, and tune machine learning models using the Scikit-Learn library. The focus was on understanding when to use specific algorithms and how to rigorously evaluate model performance to avoid pitfalls like overfitting.</p>
+            <p>Focused on the transition from analysis to predictive modeling. I learned how to build, evaluate, and tune machine learning models using Scikit-Learn while avoiding pitfalls like overfitting.</p>
             
             <h3>Key Takeaways:</h3>
             <ul>
-              <li><strong>Supervised Learning:</strong> Implemented and compared models including K-Nearest Neighbors, Logistic Regression, Support Vector Machines (SVM), and Decision Trees.</li>
-              <li><strong>Model Evaluation:</strong> Mastered the use of cross-validation, confusion matrices, precision-recall curves, and ROC curves to assess model reliability.</li>
-              <li><strong>Feature Engineering:</strong> Learned techniques for scaling, encoding categorical variables, and selecting the most impactful features for a model.</li>
-              <li><strong>Unsupervised Learning:</strong> Explored clustering techniques and dimensionality reduction (PCA) to find structure in unlabeled data.</li>
+              <li><strong>Supervised Learning:</strong> Implemented KNN, Logistic Regression, SVMs, and Decision Trees.</li>
+              <li><strong>Model Evaluation:</strong> Mastered confusion matrices, precision-recall, and ROC curves.</li>
+              <li><strong>Feature Engineering:</strong> Learned techniques for scaling and encoding categorical variables.</li>
+            </ul>
+          `
+        },
+        'sql': {
+          title: 'SQL for Data Science',
+          issuer: 'Issued by University of California, Davis',
+          img: 'assets/images/sql_coursera.png',
+          desc: `
+            <h3>Narrative Description</h3>
+            <p>This course specialized in using SQL for data analysis rather than just database management. It focused on writing complex queries to filter, sort, and summarize data to answer business questions and uncover insights within relational databases.</p>
+            
+            <h3>Key Takeaways:</h3>
+            <ul>
+              <li><strong>Complex Queries:</strong> Mastered the use of Subqueries, Joins (INNER, LEFT, RIGHT), and UNION operators.</li>
+              <li><strong>Data Profiling:</strong> Learned to assess and clean data using SQL before analysis.</li>
+              <li><strong>Analysis:</strong> Performed calculations and aggregations across multiple tables to derive key metrics.</li>
+              <li><strong>Optimization:</strong> Developed an understanding of how to write efficient queries for large datasets.</li>
             </ul>
           `
         }
       };
 
-      // 2. LOGIC: Read the URL parameter ?id=...
       const params = new URLSearchParams(window.location.search);
       const certId = params.get('id');
-
-      // 3. FALLBACK: If no ID is found, default to CS50x
       const data = certificates[certId] || certificates['cs50x'];
 
-      // 4. UPDATE: Change the HTML elements
       if(document.getElementById('cert-img')) {
           document.getElementById('cert-img').src = data.img;
           document.getElementById('cert-title').textContent = data.title;
           document.getElementById('cert-issuer').textContent = data.issuer;
-          
-          // IMPORTANT: Use innerHTML here to render the HTML tags inside desc
           document.getElementById('cert-desc').innerHTML = data.desc;
       }
     });
