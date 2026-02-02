@@ -45,6 +45,8 @@
           <div id="proj-desc" class="cert-description-block">
             </div>
 
+          <a id="proj-github" class="btn" href="#" target="_blank" rel="noopener">View on GitHub</a>
+          
           <a class="btn" href="index.html#projects">← Back to projects</a>
         </div>
       </div>
@@ -67,6 +69,7 @@
           title: 'Neutral Physics Engine',
           subtitle: 'Neutral integration, Classical mechanics, Simulation',
           img: 'assets/images/neutral_physics_engine.png',
+          github: 'https://github.com/Alameen-datasci/Neutral-Physics-Engine',
           desc: `
             <h3>Narrative Description</h3>
             <p>A long-term physics simulation project aimed at building a clean, extensible engine from first principles. The goal is to model physical systems using sound mathematical formulations, accurate numerical integration, and modular design, gradually evolving toward realistic multi-body dynamics, force interactions, and simulation stability with a strong focus on physics, mathematics, and software engineering fundamentals.</p>
@@ -76,6 +79,7 @@
           title: 'Screenbook',
           subtitle: 'Flask-based movie booking web application',
           img: 'assets/images/screenbook.png',
+          github: 'https://github.com/Alameen-datasci/SCREENBOOK',
           desc: `
             <h3>Narrative Description</h3>
             <p>A full-stack web application for movie booking developed using Flask, SQL, HTML, and CSS. It allows users to browse movies, view showtimes, select seats, and manage bookings through a browser-based interface, demonstrating backend logic, database integration, and clean web application structure.</p>
@@ -85,6 +89,7 @@
           title: 'MyBank',
           subtitle: 'A Command-Line Banking Application',
           img: 'assets/images/python_bank.png',
+          github: 'https://github.com/Alameen-datasci/MyBank-A-Command-Line-Banking-Application',
           desc: `
             <h3>Narrative Description</h3>
             <p>A Python-based command-line banking application that simulates core banking operations such as account management, balance checks, deposits, and withdrawals. The project emphasizes logical flow, user interaction through a terminal interface, and structured program design without a graphical UI.</p>
@@ -102,6 +107,8 @@
           document.getElementById('proj-title').textContent = data.title;
           document.getElementById('proj-subtitle').textContent = data.subtitle;
           document.getElementById('proj-desc').innerHTML = data.desc;
+          // Set the github link
+          document.getElementById('proj-github').href = data.github;
       }
     });
   </script>
