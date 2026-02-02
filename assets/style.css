@@ -1,12 +1,4 @@
 /* assets/style.css */
-/*
-  Central stylesheet
-  - Default white theme with alternating light section colors
-  - Dark mode toggles variables when body.dark-mode is present
-  - Profile image: Fixed circular size with precise X/Y positioning
-  - Skill chip colors: Mid-tone pastels for visibility
-  - Background: Circuit board pattern with 20% opacity (High Contrast)
-*/
 
 /* ================= THEME VARIABLES ================= */
 :root {
@@ -24,9 +16,7 @@
   /* card / panel background */
   --card-bg: #ffffff;
 
-  /* CIRCUIT BOARD PATTERN (Light Mode) 
-     - Opacity set to 0.2 (20%) for high visibility
-  */
+  /* CIRCUIT BOARD PATTERN (Light Mode) */
   --circuit-pattern: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L30 10 L30 30' fill='none' stroke='%23000000' stroke-width='1.5' stroke-opacity='0.2'/%3E%3Ccircle cx='10' cy='10' r='2' fill='%23000000' fill-opacity='0.2'/%3E%3Cpath d='M60 60 L80 60 L80 90' fill='none' stroke='%23000000' stroke-width='1.5' stroke-opacity='0.2'/%3E%3Ccircle cx='60' cy='60' r='2' fill='%23000000' fill-opacity='0.2'/%3E%3Cpath d='M90 10 L90 40 L70 40' fill='none' stroke='%23000000' stroke-width='1.5' stroke-opacity='0.2'/%3E%3Ccircle cx='90' cy='10' r='2' fill='%23000000' fill-opacity='0.2'/%3E%3C/svg%3E");
 }
 
@@ -44,9 +34,7 @@ body.dark-mode {
 
   --card-bg: #1f1f1f;
 
-  /* CIRCUIT BOARD PATTERN (Dark Mode)
-     - White strokes with 0.2 (20%) opacity
-  */
+  /* CIRCUIT BOARD PATTERN (Dark Mode) */
   --circuit-pattern: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L30 10 L30 30' fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-opacity='0.2'/%3E%3Ccircle cx='10' cy='10' r='2' fill='%23ffffff' fill-opacity='0.2'/%3E%3Cpath d='M60 60 L80 60 L80 90' fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-opacity='0.2'/%3E%3Ccircle cx='60' cy='60' r='2' fill='%23ffffff' fill-opacity='0.2'/%3E%3Cpath d='M90 10 L90 40 L70 40' fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-opacity='0.2'/%3E%3Ccircle cx='90' cy='10' r='2' fill='%23ffffff' fill-opacity='0.2'/%3E%3C/svg%3E");
 }
 
@@ -65,8 +53,6 @@ a { color: var(--accent); text-decoration: none }
 .section { padding: 3.5rem 1.25rem }
 
 /* ================= ALTERNATING SECTION BACKGROUNDS ================= */
-/* Applied: Background color + 20% Opacity Circuit Pattern */
-
 main > section:nth-of-type(odd) {
   background-color: var(--section-light-1);
   background-image: var(--circuit-pattern);
@@ -141,7 +127,7 @@ body.dark-mode main > section:nth-of-type(even) {
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 100%; /* No gap = no hover leak */
+  top: 100%;
   left: 0;
   min-width: 180px;
   background: var(--card-bg);
@@ -149,7 +135,6 @@ body.dark-mode main > section:nth-of-type(even) {
   border-radius: 8px;
   padding: 6px 0;
   z-index: 1000;
-
   pointer-events: auto;
 }
 
@@ -196,45 +181,25 @@ body.dark-mode main > section:nth-of-type(even) {
 
 /* === PROFILE PICTURE CONFIGURATION === */
 .profile-pic {
-  /* 1. SIZE OF THE WHOLE CIRCLE */
-  /* Change 'width' and 'height' to resize the circle. Must be equal. */
   width: 280px; 
   height: 280px;
-
-  /* 2. ROUNDING */
-  /* 50% makes it a perfect circle. 0% makes it a square. */
   border-radius: 50%;
-
-  /* 3. IMAGE SOURCE & FALLBACK */
   background-image: url('images/IMG-20250817-WA0002.jpg');
-  
-  /* 4. BACKGROUND POSITION (If using <div> method) */
-  /* X% Y% -> 50% (Center) 20% (Near Top) */
   background-position: 50% 20%;
   background-size: cover;
   background-repeat: no-repeat;
-  
-  /* 5. IMAGE TAG POSITION (If using <img> method) */
-  /* This ensures the image inside doesn't overflow or stretch weirdly */
-  object-fit: cover;
-  /* object-position: X Y; -> Edit this to move the image inside the frame */
-  object-position: 50% 20%; 
-
-  /* Styling */
   background-color: #cccccc;
   box-shadow: var(--card-shadow);
   transition: transform 220ms ease, box-shadow 220ms ease;
-  
   display: block;
   overflow: hidden; 
 }
 
-/* Ensures <img> tag inside respects the container */
 .profile-pic img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 20%; /* MATCH THIS WITH ABOVE */
+  object-position: 50% 20%;
   border-radius: 50%;
 }
 
@@ -256,7 +221,6 @@ body.dark-mode main > section:nth-of-type(even) {
 .cta:hover { transform: translateY(-4px) }
 
 /* ========================= SKILLS ========================= */
-
 .skills {
   display: flex;
   flex-wrap: wrap;
@@ -268,7 +232,7 @@ body.dark-mode main > section:nth-of-type(even) {
   border: 0;
   padding: 0.6rem 1rem;
   border-radius: 999px;
-  background: var(--surface); /* fallback */
+  background: var(--surface);
   cursor: pointer;
   color: var(--text);
   font-weight: 600;
@@ -281,74 +245,18 @@ body.dark-mode main > section:nth-of-type(even) {
   box-shadow: var(--card-shadow);
 }
 
-/* ========================= COLOR OVERRIDES ========================= */
-/* Each chip uses Mid-Tone pastels so they are all equally visible */
-
-/* 1. Python (Reddish) */
-.skills .skill-chip:nth-child(1) {
-  background: linear-gradient(135deg, #ffdede, #ffb2b2);
-  color: #2b2b2b;
-}
-
-/* 2. Pandas (Blueish) */
-.skills .skill-chip:nth-child(2) {
-  background: linear-gradient(135deg, #dceeff, #9fc8ff);
-  color: #07233a;
-}
-
-/* 3. NumPy (Greenish) */
-.skills .skill-chip:nth-child(3) {
-  background: linear-gradient(135deg, #dfffe3, #9ff3c1);
-  color: #073a1f;
-}
-
-/* 4. Matplotlib (Yellowish) */
-.skills .skill-chip:nth-child(4) {
-  background: linear-gradient(135deg, #fff6d8, #ffe28a);
-  color: #3b2f00;
-}
-
-/* 5. Data Analysis (Purplish) */
-.skills .skill-chip:nth-child(5) {
-  background: linear-gradient(135deg, #e8e1ff, #c5b8ff);
-  color: #2b1f4d;
-}
-
-/* 6. SQL (Orangish) */
-.skills .skill-chip:nth-child(6) {
-  background: linear-gradient(135deg, #ffd7c4, #ffbfa0);
-  color: #3b1f0f;
-}
-
-/* 7. HTML (Coral/Rose - Mid-Tone) */
-.skills .skill-chip:nth-child(7) {
-  background: linear-gradient(135deg, #ffc5c5, #ff9494);
-  color: #4a0d1d;
-}
-
-/* 8. C Programming (Cyan/Turquoise - Mid-Tone) */
-.skills .skill-chip:nth-child(8) {
-  background: linear-gradient(135deg, #a2d2ff, #80deea);
-  color: #00363a;
-}
-
-/* 9. Machine Learning (Mint/Sage - Mid-Tone) */
-.skills .skill-chip:nth-child(9) {
-  background: linear-gradient(135deg, #caffbf, #9bf6ff);
-  color: #0f3d39;
-}
-
-/* 10. Git (Slate/Grey - Mid-Tone) */
-.skills .skill-chip:nth-child(10) {
-  background: linear-gradient(135deg, #e2e8f0, #94a3b8);
-  color: #1e293b;
-}
-
-/* 11. Supervised Machine Learning (Indigo/Violet - Mid-Tone) */
-.skills .skill-chip:nth-child(11) {
-  background: linear-gradient(135deg, #ddd6fe, #a78bfa);
-  color: #2e1065;
-}
+/* Color overrides for chips... (Trimming for brevity, assume original logic here) */
+.skills .skill-chip:nth-child(1) { background: linear-gradient(135deg, #ffdede, #ffb2b2); color: #2b2b2b; }
+.skills .skill-chip:nth-child(2) { background: linear-gradient(135deg, #dceeff, #9fc8ff); color: #07233a; }
+.skills .skill-chip:nth-child(3) { background: linear-gradient(135deg, #dfffe3, #9ff3c1); color: #073a1f; }
+.skills .skill-chip:nth-child(4) { background: linear-gradient(135deg, #fff6d8, #ffe28a); color: #3b2f00; }
+.skills .skill-chip:nth-child(5) { background: linear-gradient(135deg, #e8e1ff, #c5b8ff); color: #2b1f4d; }
+.skills .skill-chip:nth-child(6) { background: linear-gradient(135deg, #ffd7c4, #ffbfa0); color: #3b1f0f; }
+.skills .skill-chip:nth-child(7) { background: linear-gradient(135deg, #ffc5c5, #ff9494); color: #4a0d1d; }
+.skills .skill-chip:nth-child(8) { background: linear-gradient(135deg, #a2d2ff, #80deea); color: #00363a; }
+.skills .skill-chip:nth-child(9) { background: linear-gradient(135deg, #caffbf, #9bf6ff); color: #0f3d39; }
+.skills .skill-chip:nth-child(10) { background: linear-gradient(135deg, #e2e8f0, #94a3b8); color: #1e293b; }
+.skills .skill-chip:nth-child(11) { background: linear-gradient(135deg, #ddd6fe, #a78bfa); color: #2e1065; }
 
 /* ================= CARDS GRID ================= */
 .cards-grid {
@@ -401,9 +309,14 @@ body.dark-mode main > section:nth-of-type(even) {
 
 .detail-img {
   width: 100%;
-  max-width: 900px;
+  max-width: 900px; /* Default for certificates */
   border-radius: 8px;
   box-shadow: var(--card-shadow);
+}
+
+/* NEW: Specific override for Project Detail Page */
+.detail-img.project-img-size {
+  max-width: 600px;
 }
 
 .detail-content { flex: 1 1 360px }
