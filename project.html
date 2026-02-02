@@ -1,16 +1,9 @@
-<!-- project.html -->
-<!--
-  Project detail page (large view)
-  - Reuse assets/style.css and assets/script.js
-  - Replace images, descriptions, and GitHub/demo links below.
--->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Project Details</title>
-
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -21,13 +14,13 @@
       <ul class="nav-list">
         <li><a class="nav-link" href="index.html#home">Home</a></li>
         <li><a class="nav-link" href="index.html#about">About</a></li>
-        <li><a class="nav-link" href="certificate.html">Certificates</a></li>
-        <li><a class="nav-link" href="project.html">Projects</a></li>
+        <li><a class="nav-link" href="index.html#certificates">Certificates</a></li>
+        <li><a class="nav-link" href="index.html#projects">Projects</a></li>
 
         <li class="nav-item">
           <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Contact ▾</button>
           <ul class="dropdown-menu" role="menu" aria-label="Contact links">
-            <li role="none"><a role="menuitem" href="www.linkedin.com/in/alameen-datasci" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li role="none"><a role="menuitem" href="https://www.linkedin.com/in/alameen-datasci" target="_blank" rel="noopener">LinkedIn</a></li>
             <li role="none"><a role="menuitem" href="https://github.com/Alameen-datasci" target="_blank" rel="noopener">GitHub</a></li>
             <li role="none"><a role="menuitem" href="mailto:alameendatasci@gmail.com">Gmail</a></li>
           </ul>
@@ -42,17 +35,17 @@
     <section class="detail-hero section">
       <div class="container">
         <div class="detail-img-wrap">
-          <img id="cert-img" class="detail-img" src="assets/images/neutral_physics_engine.png" alt="project image" />
+          <img id="proj-img" class="detail-img project-img-size" src="" alt="Project image" />
         </div>
 
         <div class="detail-content">
           <h1 id="proj-title">Project Title</h1>
-          <p id="proj-issuer" class="muted">Neutral integration, Classical mechanics, Simulation</p>
+          <p id="proj-subtitle" class="muted">Subtitle</p>
 
-          <div id="proj-desc" class="proj-description-block">
+          <div id="proj-desc" class="cert-description-block">
             </div>
 
-          <a class="btn" href="index.html#projects">← Back to certificates</a>
+          <a class="btn" href="index.html#projects">← Back to projects</a>
         </div>
       </div>
     </section>
@@ -69,83 +62,46 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       
-      const certificates = {
+      const projects = {
         'neutral_physics_engine': {
           title: 'Neutral Physics Engine',
-          issuer: 'Neutral integration, Classical mechanics, Simulation',
+          subtitle: 'Neutral integration, Classical mechanics, Simulation',
           img: 'assets/images/neutral_physics_engine.png',
           desc: `
             <h3>Narrative Description</h3>
-            <p>More than just a coding course, CS50x was a rigorous deep dive into the art of computational thinking. Starting with the raw power of C, I learned how computers "think" at the hardware level—managing memory and pointers—before scaling up to higher-level abstractions in Python and SQL. This course taught me not to just write code, but to solve complex problems with algorithmic efficiency and elegance.</p>
-            
-            <h3>Key Takeaways:</h3>
-            <ul>
-              <li><strong>Foundations:</strong> Mastered low-level concepts like memory management, pointers, and data structures in C.</li>
-              <li><strong>Algorithms:</strong> Gained proficiency in searching and sorting algorithms, focusing on Big O notation.</li>
-              <li><strong>Web Engineering:</strong> Built dynamic web applications using Python (Flask), SQL, and HTML/CSS/JS.</li>
-            </ul>
+            <p>A long-term physics simulation project aimed at building a clean, extensible engine from first principles. The goal is to model physical systems using sound mathematical formulations, accurate numerical integration, and modular design, gradually evolving toward realistic multi-body dynamics, force interactions, and simulation stability with a strong focus on physics, mathematics, and software engineering fundamentals.</p>
           `
         },
         'screenbook': {
           title: 'Screenbook',
-          issuer: 'Flask-based movie booking web application',
+          subtitle: 'Flask-based movie booking web application',
           img: 'assets/images/screenbook.png',
           desc: `
             <h3>Narrative Description</h3>
-            <p>While CS50x taught me how to solve problems, CS50p taught me how to solve them <em>The Pythonic Way</em>. This specialized course focused on writing code that is not only functional but also readable, robust, and efficient.</p>
-            
-            <h3>Key Takeaways:</h3>
-            <ul>
-              <li><strong>Advanced Python:</strong> Mastered Regular Expressions (Regex), File I/O, and Functional Programming.</li>
-              <li><strong>Code Quality:</strong> Mastered Unit Testing (pytest) and PEP 8 style guides.</li>
-              <li><strong>Object-Oriented Design:</strong> Implemented custom Classes and Objects to model real-world problems.</li>
-            </ul>
+            <p>A full-stack web application for movie booking developed using Flask, SQL, HTML, and CSS. It allows users to browse movies, view showtimes, select seats, and manage bookings through a browser-based interface, demonstrating backend logic, database integration, and clean web application structure.</p>
           `
         },
         'mybank': {
           title: 'MyBank',
-          issuer: 'A-Command-Line-Banking-Application',
+          subtitle: 'A Command-Line Banking Application',
           img: 'assets/images/python_bank.png',
           desc: `
             <h3>Narrative Description</h3>
-            <p>This course served as my entry point into the data science ecosystem. I transitioned from general programming to data manipulation, learning to wrangle messy, real-world datasets into clean, actionable insights using Pandas.</p>
-            
-            <h3>Key Takeaways:</h3>
-            <ul>
-              <li><strong>Data Wrangling:</strong> Mastered Pandas and NumPy for efficient data cleaning and merging.</li>
-              <li><strong>Analysis:</strong> Conducted hypothesis testing and statistical analysis on real-world datasets.</li>
-              <li><strong>Vectorization:</strong> Learned techniques to process large datasets faster than standard loops.</li>
-            </ul>
-          `
-        },
-        'sql': {
-          title: 'SQL for Data Science',
-          issuer: 'Issued by University of California, Davis',
-          img: 'assets/images/sql_coursera.png',
-          desc: `
-            <h3>Narrative Description</h3>
-            <p>This course specialized in using SQL for data analysis rather than just database management. It focused on writing complex queries to filter, sort, and summarize data to answer business questions and uncover insights within relational databases.</p>
-            
-            <h3>Key Takeaways:</h3>
-            <ul>
-              <li><strong>Complex Queries:</strong> Mastered the use of Subqueries, Joins (INNER, LEFT, RIGHT), and UNION operators.</li>
-              <li><strong>Data Profiling:</strong> Learned to assess and clean data using SQL before analysis.</li>
-              <li><strong>Analysis:</strong> Performed calculations and aggregations across multiple tables to derive key metrics.</li>
-              <li><strong>Optimization:</strong> Developed an understanding of how to write efficient queries for large datasets.</li>
-            </ul>
+            <p>A Python-based command-line banking application that simulates core banking operations such as account management, balance checks, deposits, and withdrawals. The project emphasizes logical flow, user interaction through a terminal interface, and structured program design without a graphical UI.</p>
           `
         }
       };
 
       const params = new URLSearchParams(window.location.search);
-      const certId = params.get('id');
-      const data = certificates[certId] || certificates['cs50x'];
+      const projId = params.get('id');
+      // Default to neutral_physics_engine if id is missing or invalid
+      const data = projects[projId] || projects['neutral_physics_engine'];
 
-      if(document.getElementById('cert-img')) {
-          document.getElementById('cert-img').src = data.img;
-          document.getElementById('cert-title').textContent = data.title;
-          document.getElementById('cert-issuer').textContent = data.issuer;
-          document.getElementById('cert-desc').innerHTML = data.desc;
+      if(document.getElementById('proj-img')) {
+          document.getElementById('proj-img').src = data.img;
+          document.getElementById('proj-title').textContent = data.title;
+          document.getElementById('proj-subtitle').textContent = data.subtitle;
+          document.getElementById('proj-desc').innerHTML = data.desc;
       }
     });
   </script>
